@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/bin/Debug/net7.0/latihanencapsulasi
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/bin/Debug/net7.0/latihanencapsulasi.deps.json
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/bin/Debug/net7.0/latihanencapsulasi.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/bin/Debug/net7.0/latihanencapsulasi.dll
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/bin/Debug/net7.0/latihanencapsulasi.pdb
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.dll
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/refint/latihanencapsulasi.dll
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.pdb
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/latihanencapsulasi.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/latihanencapsulasi/obj/Debug/net7.0/ref/latihanencapsulasi.dll
