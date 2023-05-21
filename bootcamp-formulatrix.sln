@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "latihanencapsulasi01", "lat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interface", "interface\interface.csproj", "{527D0E01-8D61-4348-9FE3-D218E135F9AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gameSederhana", "gameSederhana\gameSederhana.csproj", "{3D5178AE-5612-4E75-988A-A09AC7E15101}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{527D0E01-8D61-4348-9FE3-D218E135F9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{527D0E01-8D61-4348-9FE3-D218E135F9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{527D0E01-8D61-4348-9FE3-D218E135F9AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D5178AE-5612-4E75-988A-A09AC7E15101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D5178AE-5612-4E75-988A-A09AC7E15101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D5178AE-5612-4E75-988A-A09AC7E15101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D5178AE-5612-4E75-988A-A09AC7E15101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/gameSederhana/bin/Debug/net7.0/gameSederhana
+/home/friday/bootcamp-formulatrix/gameSederhana/bin/Debug/net7.0/gameSederhana.deps.json
+/home/friday/bootcamp-formulatrix/gameSederhana/bin/Debug/net7.0/gameSederhana.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/gameSederhana/bin/Debug/net7.0/gameSederhana.dll
+/home/friday/bootcamp-formulatrix/gameSederhana/bin/Debug/net7.0/gameSederhana.pdb
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.dll
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/refint/gameSederhana.dll
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.pdb
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/gameSederhana.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/gameSederhana/obj/Debug/net7.0/ref/gameSederhana.dll
