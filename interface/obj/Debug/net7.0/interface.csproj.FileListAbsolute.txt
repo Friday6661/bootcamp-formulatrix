@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/interface/bin/Debug/net7.0/interface
+/home/friday/bootcamp-formulatrix/interface/bin/Debug/net7.0/interface.deps.json
+/home/friday/bootcamp-formulatrix/interface/bin/Debug/net7.0/interface.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/interface/bin/Debug/net7.0/interface.dll
+/home/friday/bootcamp-formulatrix/interface/bin/Debug/net7.0/interface.pdb
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.dll
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/refint/interface.dll
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.pdb
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/interface.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/interface/obj/Debug/net7.0/ref/interface.dll

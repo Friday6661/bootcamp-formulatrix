@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "latihanencapsulasi", "latih
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "latihanencapsulasi01", "latihanencapsulasi01\latihanencapsulasi01.csproj", "{6918AB1B-9C8F-4160-9586-619E5A244BFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interface", "interface\interface.csproj", "{527D0E01-8D61-4348-9FE3-D218E135F9AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{6918AB1B-9C8F-4160-9586-619E5A244BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6918AB1B-9C8F-4160-9586-619E5A244BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6918AB1B-9C8F-4160-9586-619E5A244BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{527D0E01-8D61-4348-9FE3-D218E135F9AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{527D0E01-8D61-4348-9FE3-D218E135F9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{527D0E01-8D61-4348-9FE3-D218E135F9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{527D0E01-8D61-4348-9FE3-D218E135F9AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
