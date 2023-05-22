@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/gameSedehana001/bin/Debug/net7.0/gameSedehana001
+/home/friday/bootcamp-formulatrix/gameSedehana001/bin/Debug/net7.0/gameSedehana001.deps.json
+/home/friday/bootcamp-formulatrix/gameSedehana001/bin/Debug/net7.0/gameSedehana001.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/gameSedehana001/bin/Debug/net7.0/gameSedehana001.dll
+/home/friday/bootcamp-formulatrix/gameSedehana001/bin/Debug/net7.0/gameSedehana001.pdb
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.dll
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/refint/gameSedehana001.dll
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.pdb
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/gameSedehana001.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/gameSedehana001/obj/Debug/net7.0/ref/gameSedehana001.dll
