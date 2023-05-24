@@ -9,7 +9,9 @@ public class Program {
         // fungsi input user untuk bilangan akhir (bilangan terbesar)
         Console.Write("Masukkan nilai bilangan Maximum: ");
         int n = Convert.ToInt32(Console.ReadLine());
+
         Algorithm.CheckNumber(i, n);
+        
     }
         
 }
