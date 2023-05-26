@@ -1,0 +1,5 @@
+/home/friday/bootcamp-formulatrix/delegategeneric/obj/Debug/net7.0/delegategeneric.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/delegategeneric/obj/Debug/net7.0/delegategeneric.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/delegategeneric/obj/Debug/net7.0/delegategeneric.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/delegategeneric/obj/Debug/net7.0/delegategeneric.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/delegategeneric/obj/Debug/net7.0/delegategeneric.csproj.CoreCompileInputs.cache

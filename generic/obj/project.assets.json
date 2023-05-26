@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/friday/bootcamp-formulatrix/latihanhari002A/latihanhari002A.csproj",
-      "projectName": "latihanhari002A",
-      "projectPath": "/home/friday/bootcamp-formulatrix/latihanhari002A/latihanhari002A.csproj",
+      "projectUniqueName": "/home/friday/bootcamp-formulatrix/generic/generic.csproj",
+      "projectName": "generic",
+      "projectPath": "/home/friday/bootcamp-formulatrix/generic/generic.csproj",
       "packagesPath": "/home/friday/.nuget/packages/",
-      "outputPath": "/home/friday/bootcamp-formulatrix/latihanhari002A/obj/",
+      "outputPath": "/home/friday/bootcamp-formulatrix/generic/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/friday/.nuget/NuGet/NuGet.Config"
