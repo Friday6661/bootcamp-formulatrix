@@ -36,6 +36,9 @@ public class Program {
         logic01.AddLogic(3, new Foo());
         logic01.AddLogic(7, new Bazz());
         logic01.DisplayLogic();
-        logic.HasilLogic(1,24);
+        logic01.HasilLogic(1,24);
+        logic01.RemoveLogic(3);
+        output01.WriteLine("");
+        logic01.HasilLogic(1,24);
     }
 }

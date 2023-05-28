@@ -19,9 +19,9 @@ public class NewLogic
         output = writer;
     }
 
-    public void AddLogic(int key, IKontrak item)
+    public void AddLogic(int key, IKontrak value)
     {
-        _kontrak.Add(key, item);
+        _kontrak.Add(key, value);
     }
 
     public void DisplayLogic()
@@ -30,6 +30,11 @@ public class NewLogic
         {
             output.WriteLine(kvp.Value.ToString());
         }
+    }
+
+    public void RemoveLogic(int key)
+    {
+        _kontrak.Remove(key);
     }
 
 
