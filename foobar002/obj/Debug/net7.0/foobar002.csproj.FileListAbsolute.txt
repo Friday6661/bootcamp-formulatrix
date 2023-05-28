@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/foobar002/bin/Debug/net7.0/foobar002
+/home/friday/bootcamp-formulatrix/foobar002/bin/Debug/net7.0/foobar002.deps.json
+/home/friday/bootcamp-formulatrix/foobar002/bin/Debug/net7.0/foobar002.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/foobar002/bin/Debug/net7.0/foobar002.dll
+/home/friday/bootcamp-formulatrix/foobar002/bin/Debug/net7.0/foobar002.pdb
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.dll
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/refint/foobar002.dll
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.pdb
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/foobar002.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/foobar002/obj/Debug/net7.0/ref/foobar002.dll
