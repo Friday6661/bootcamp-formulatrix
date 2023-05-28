@@ -16,16 +16,9 @@ public class NewLogic
     public NewLogic(IOutput writer)
     {
         _kontrak = new Dictionary<int, IKontrak>();
-
-        //Dibuat method sendiri agar user lebih flexsibel menambahakan foo/bar/baz atau kombinasi dari ketiganya
-        //_kontrak.Add(new FooBar());
-        //_kontrak.Add(new Bar());
-        //_kontrak.Add(new Foo());
-
         output = writer;
     }
 
-    //Method yang ditambahkan
     public void AddLogic(int key, IKontrak item)
     {
         _kontrak.Add(key, item);
