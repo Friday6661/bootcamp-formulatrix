@@ -15,6 +15,7 @@ public class Program {
         IOutput output = new ConsoleOutput();
         Logic logic = new Logic(output);
 
+        output.WriteLine("Logic menggunakan List");
         logic.AddLogic(new Foo());
         logic.AddLogic(new Bar());
         //logic.AddLogic(new FooBar());
@@ -30,10 +31,11 @@ public class Program {
         IOutput output01 = new ConsoleOutput();
         NewLogic logic01 = new NewLogic(output01);
 
+        output01.WriteLine("NewLogic menggunakan Dictionary");
         logic01.AddLogic(5, new Bar());
         logic01.AddLogic(3, new Foo());
         logic01.AddLogic(7, new Bazz());
         logic01.DisplayLogic();
-        logic.HasilLogic(1,21);
+        logic.HasilLogic(1,24);
     }
 }
