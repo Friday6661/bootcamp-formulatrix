@@ -13,6 +13,19 @@ public class Program
         Console.Write("Masukkan nilai bilangan Maximum: ");
         int StopNumber = Convert.ToInt32(Console.ReadLine());
         Logic foobarbaz = new Logic();
-        foobarbaz.CetakLogic(StartNumber, StopNumber);
+        foobarbaz.AddCondition(3, "FOO");
+        foobarbaz.AddCondition(5, "Bar");
+
+
+        foobarbaz.ResultCondition(StartNumber, StopNumber);
+
+        foobarbaz.RemoveCondition(3);
+        foobarbaz.ResultCondition(StartNumber, StopNumber);
+        foobarbaz.AddCondition(7, "FOO");
+        foobarbaz.ResultCondition(StartNumber, StopNumber);
+        foobarbaz.ListAllCondition();
+        foobarbaz.ClearAllCondition();
+        foobarbaz.ListAllCondition();
+        foobarbaz.ResultCondition(StartNumber, StopNumber);
     }
 }
