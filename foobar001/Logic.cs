@@ -31,6 +31,7 @@ public class Logic
     // Method untuk menampilkan seluruh kondisi terdaftar
     public void ListAllCondition()
     {
+        Console.WriteLine("Ini adalah Semua Kondisi yang terdaftar: ");
         foreach(KeyValuePair<int, string> kvp in mapping)
         {
             Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
@@ -59,7 +60,7 @@ public class Logic
             string values = mapping[key];
             if (values == value.ToLower())
             {
-                Console.WriteLine($"Key: {key}");
+                Console.WriteLine($"Key dari {value.ToLower()} adalah: {key}");
             }
         }
     }
