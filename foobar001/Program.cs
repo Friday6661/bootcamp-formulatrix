@@ -28,6 +28,8 @@ public class Program
         //foobarbaz.ClearAllCondition();
         foobarbaz.CheckNumber("fIz");
         foobarbaz.ListAllCondition();
+        foobarbaz.ChangeValue(7, "bAZ");
+        foobarbaz.AddCondition(10, "FiZz");
         foobarbaz.ResultCondition(StartNumber, StopNumber);
     }
 }

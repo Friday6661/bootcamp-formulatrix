@@ -67,7 +67,11 @@ public class Logic
         }
     }
 
-    
+    // Methode untuk mengubah suatu value berdasarkan key
+    public void ChangeValue(int key, string newvalue)
+    {
+        mapping[key] = newvalue.ToLower();
+    }    
 
     // Method untuk menghapus semua kondisi
     public void ClearAllCondition()
