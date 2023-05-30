@@ -17,20 +17,30 @@ public class Logic
     }
 
     // Method agar user bisa menambahkan logic baru
-    public void AddCondition(int key, string value)
+    public string AddCondition(int key, string value)
     {
         if (!mapping.ContainsKey(key))
         {
             mapping.Add(key, value.ToLower());
+            return $"\nKey {key} dan Value {value} berhasil ditambahkan";
+        }
+        else
+        {
+            return $"\nKey {key} yang anda daftarkan sudah ada";
         }
     }
 
     // Method agar user bisa menghapus logic yang terdaftar
-    public void RemoveCondition(int key)
+    public string RemoveCondition(int key)
     {
         if (mapping.ContainsKey(key))
         {
             mapping.Remove(key);
+            return $"\nKey {key} berhasil diremove";
+        }
+        else
+        {
+            return $"\nKey {key} sudah tidak terdaftar";
         }
     }
 
@@ -64,7 +74,7 @@ public class Logic
         }
         else
         {
-            return "False";
+            return $"\nKey {key} tidak terdaftar";
         }
     }
 
@@ -106,17 +116,23 @@ public class Logic
     }*/
 
     // Methode untuk mengubah suatu value berdasarkan key
-    public void ChangeValue(int key, string newvalue)
+    public string ChangeValue(int key, string newvalue)
     {
         if (mapping.ContainsKey(key))
         {
             mapping[key] = newvalue.ToLower();
+            return $"\nBerhasil mengubah Value menjadi {newvalue} dari Key {key}";
+        }
+        else
+        {
+            return $"\nGagal mengubah Value, Key {key} tidak terdaftar";
         }
     }
     // Method untuk menghapus semua kondisi
-    public void ClearAllCondition()
+    public string ClearAllCondition()
     {
         mapping.Clear();
+        return "\nMenghapus semua Kondisi";
     }
 
     //Method untuk menampilkan deret bilangan foo bar
