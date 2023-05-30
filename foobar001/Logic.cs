@@ -1,6 +1,5 @@
 namespace LogicLib;
 using System.Text;
-using System;
 using System.Collections.Generic;
 
 public class Logic
@@ -20,13 +19,19 @@ public class Logic
     // Method agar user bisa menambahkan logic baru
     public void AddCondition(int key, string value)
     {
-        mapping.Add(key, value.ToLower());
+        if (!mapping.ContainsKey(key))
+        {
+            mapping.Add(key, value.ToLower());
+        }
     }
 
     // Method agar user bisa menghapus logic yang terdaftar
     public void RemoveCondition(int key)
     {
-        mapping.Remove(key);
+        if (mapping.ContainsKey(key))
+        {
+            mapping.Remove(key);
+        }
     }
 
     // Method untuk menampilkan seluruh kondisi terdaftar
@@ -103,9 +108,11 @@ public class Logic
     // Methode untuk mengubah suatu value berdasarkan key
     public void ChangeValue(int key, string newvalue)
     {
-        mapping[key] = newvalue.ToLower();
-    }    
-
+        if (mapping.ContainsKey(key))
+        {
+            mapping[key] = newvalue.ToLower();
+        }
+    }
     // Method untuk menghapus semua kondisi
     public void ClearAllCondition()
     {
@@ -113,8 +120,9 @@ public class Logic
     }
 
     //Method untuk menampilkan deret bilangan foo bar
-    public void ResultCondition(int startNumber, int stopNumber)
+    public string ResultCondition(int startNumber, int stopNumber)
     {
+        StringBuilder sb = new StringBuilder();
         for (int i = startNumber; i <= stopNumber; i++)
         {
             string result = "";
@@ -133,13 +141,14 @@ public class Logic
 
             if (i != stopNumber)
             {
-                Console.Write($"{result}, ");
+                sb.Append($"{result}, ");
             }
             else
             {
-                Console.WriteLine($"{result}");
+                sb.Append($"{result}");
             }
         }
-    }
 
+        return sb.ToString();
+    }
 }
