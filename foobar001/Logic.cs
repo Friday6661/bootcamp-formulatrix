@@ -37,16 +37,34 @@ public class Logic
         }
     }
 
-    // Method untuk Check kondisi berdasarkan value
-    /*
-    public void CheckCondition()
+    // Method untuk Check kondisi berdasarkan key
+    public void CheckCondition(int key)
     {
-        if (!mapping.ContainsValue(value.ToLower))
+        if (mapping.ContainsKey(key))
         {
-            return mapping.Keys();
+            Console.WriteLine($"value: {mapping[key]}");
+        }
+        else
+        {
+            Console.WriteLine("False");
         }
     }
-    */
+
+    //Method untuk check number (key) by value
+    public void CheckNumber(string value)
+    {
+        for (int i = 0; i < mapping.Count; i++)
+        {
+            int key = mapping.Keys.ElementAt(i);
+            string values = mapping[key];
+            if (values == value.ToLower())
+            {
+                Console.WriteLine($"Key: {key}");
+            }
+        }
+    }
+
+    
 
     // Method untuk menghapus semua kondisi
     public void ClearAllCondition()
@@ -54,6 +72,7 @@ public class Logic
         mapping.Clear();
     }
 
+    //Method untuk menampilkan deret bilangan foo bar
     public void ResultCondition(int startNumber, int stopNumber)
     {
         for (int i = startNumber; i <= stopNumber; i++)
