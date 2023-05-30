@@ -1,11 +1,10 @@
 namespace LogicLib;
-using DisplayLib;
+using System.Text;
 using System;
 using System.Collections.Generic;
 
 public class Logic
 {
-    Display display = new Display();
     Dictionary<int, string> mapping;
     public int startNumber { get; set; }
     public int stopNumber { get; set; }
@@ -31,41 +30,75 @@ public class Logic
     }
 
     // Method untuk menampilkan seluruh kondisi terdaftar
-    public void ListAllCondition()
+    /*
+    public string ListAllCondition()
     {
-        display.WriteLine("Ini adalah Semua Kondisi yang terdaftar: ");
         foreach(KeyValuePair<int, string> kvp in mapping)
         {
-            display.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+            return $"\nKey: {kvp.Key}, Value: {kvp.Value}";
         }
+    }*/
+    public string ListAllCondition()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (KeyValuePair<int, string> kvp in mapping)
+        {
+            sb.AppendLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+        }
+
+        return sb.ToString();
     }
 
     // Method untuk Check kondisi berdasarkan key
-    public void CheckCondition(int key)
+    public string CheckCondition(int key)
     {
         if (mapping.ContainsKey(key))
         {
-            display.WriteLine($"value: {mapping[key]}");
+            return $"\nValue dari Key {key} adalah: {mapping[key]}";
         }
         else
         {
-            display.WriteLine("False");
+            return "False";
         }
     }
 
     //Method untuk check number (key) by value
-    public void CheckNumber(string value)
+
+    public string CheckNumber(string value)
     {
+        bool check = mapping.ContainsValue(value.ToLower());
+
+        if (check)
+        {
+            foreach (var keyValuePair in mapping)
+            {
+                if (keyValuePair.Value.ToLower() == value.ToLower())
+                {
+                    return $"\nKey dari {value.ToLower()} adalah: {keyValuePair.Key}";
+                }
+            }
+            return "\nKey tidak ditemukan";
+        }
+        else
+        {
+        return "\nValue tidak terdaftar";
+        }
+    }
+
+    /*
+    public void CheckNumber(string value)
+    {        
         for (int i = 0; i < mapping.Count; i++)
         {
             int key = mapping.Keys.ElementAt(i);
             string values = mapping[key];
             if (values == value.ToLower())
             {
-                display.WriteLine($"Key dari {value.ToLower()} adalah: {key}");
+                return $"Key dari {value.ToLower()} adalah: {key}";
             }
         }
-    }
+    }*/
 
     // Methode untuk mengubah suatu value berdasarkan key
     public void ChangeValue(int key, string newvalue)

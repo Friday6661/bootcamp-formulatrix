@@ -22,14 +22,15 @@ public class Program
         //foobarbaz.RemoveCondition(3);
         foobarbaz.ResultCondition(StartNumber, StopNumber);
         foobarbaz.AddCondition(7, "FIZ");
-        foobarbaz.CheckCondition(7);
+        Console.WriteLine(foobarbaz.CheckCondition(7));
         foobarbaz.ResultCondition(StartNumber, StopNumber);
         //foobarbaz.ListAllCondition();
         //foobarbaz.ClearAllCondition();
-        foobarbaz.CheckNumber("fIz");
-        foobarbaz.ListAllCondition();
+        Console.WriteLine(foobarbaz.CheckNumber("fIz"));
+        Console.WriteLine(foobarbaz.ListAllCondition());
         foobarbaz.ChangeValue(7, "bAZ");
         foobarbaz.AddCondition(10, "FiZz");
+        Console.WriteLine(foobarbaz.ListAllCondition());
         foobarbaz.ResultCondition(StartNumber, StopNumber);
     }
 }
