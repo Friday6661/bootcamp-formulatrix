@@ -1,9 +1,11 @@
 namespace LogicLib;
+using DisplayLib;
 using System;
 using System.Collections.Generic;
 
 public class Logic
 {
+    Display display = new Display();
     Dictionary<int, string> mapping;
     public int startNumber { get; set; }
     public int stopNumber { get; set; }
@@ -31,10 +33,10 @@ public class Logic
     // Method untuk menampilkan seluruh kondisi terdaftar
     public void ListAllCondition()
     {
-        Console.WriteLine("Ini adalah Semua Kondisi yang terdaftar: ");
+        display.WriteLine("Ini adalah Semua Kondisi yang terdaftar: ");
         foreach(KeyValuePair<int, string> kvp in mapping)
         {
-            Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+            display.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
         }
     }
 
@@ -43,11 +45,11 @@ public class Logic
     {
         if (mapping.ContainsKey(key))
         {
-            Console.WriteLine($"value: {mapping[key]}");
+            display.WriteLine($"value: {mapping[key]}");
         }
         else
         {
-            Console.WriteLine("False");
+            display.WriteLine("False");
         }
     }
 
@@ -60,7 +62,7 @@ public class Logic
             string values = mapping[key];
             if (values == value.ToLower())
             {
-                Console.WriteLine($"Key dari {value.ToLower()} adalah: {key}");
+                display.WriteLine($"Key dari {value.ToLower()} adalah: {key}");
             }
         }
     }
