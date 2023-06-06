@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/holeCard/bin/Debug/net7.0/holeCard
+/home/friday/bootcamp-formulatrix/holeCard/bin/Debug/net7.0/holeCard.deps.json
+/home/friday/bootcamp-formulatrix/holeCard/bin/Debug/net7.0/holeCard.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/holeCard/bin/Debug/net7.0/holeCard.dll
+/home/friday/bootcamp-formulatrix/holeCard/bin/Debug/net7.0/holeCard.pdb
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.dll
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/refint/holeCard.dll
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.pdb
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/holeCard.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/holeCard/obj/Debug/net7.0/ref/holeCard.dll
