@@ -5,15 +5,15 @@ using TileTypesLib;
 public class Board : IBoard
 {
     private int _size;
-    private Dictionary<int, int> _snakes;
-    private Dictionary<int, int> _ladders;
-    private Dictionary<int, TileType> _tiles;
+    private Dictionary<int, int> _snake;
+    private Dictionary<int, int> _ladder;
+    private Dictionary<int, TileType> _tile;
     public Board(int size)
     {
         _size = size;
-        _snakes = new Dictionary<int, int>();
-        _ladders = new Dictionary<int, int>();
-        _tiles = new Dictionary<int, TileType>();
+        _snake = new Dictionary<int, int>();
+        _ladder = new Dictionary<int, int>();
+        _tile = new Dictionary<int, TileType>();
     }
 
     public int GetSize()
@@ -32,79 +32,51 @@ public class Board : IBoard
         {
             throw new ArgumentOutOfRangeException("Invalid position");
         }
-        _tiles[position] = type;
+        _tile[position] = type;
     }
 
     public TileType GetTileType(int position)
     {
-        if (!_tiles.ContainsKey(position))
+        if (!_tile.ContainsKey(position))
         {
             return TileType.Normal;
         }
-        return _tiles[position];
+        return _tile[position];
     }
 
-    public void AddSnake()
+    public void AddSnake(int start, int end)
     {
-        int maxPosition = _size / 2 - 1;
-        int minPosition = 0;
-        int start = GenerateRandomPosition(minPosition, maxPosition);
-
-        if (_ladders.ContainsKey(start))
-        {
-            AddSnake();
-            return;
-        }
-
-        int end = GenerateRandomPosition(start+1, _size -1);
-
         if (start <= end)
         {
             throw new ArgumentException("Invalid snake configuration");
         }
-        _snakes[start] = end;
+        _snake[start] = end;
     }
-    public void AddLadder()
+
+    public void AddLadder(int start, int end)
     {
-        int maxPosition = _size / 2 - 1;
-        int minPosition = 0;
-        int start = GenerateRandomPosition(minPosition, maxPosition);
-
-        if (_snakes.ContainsKey(start))
-        {
-            AddLadder();
-            return;
-        }
-
-        int end = GenerateRandomPosition(start +1, _size -1);
-        
         if (start >= end)
         {
-            throw new ArgumentException("Invalid ladder position");
+            throw new ArgumentException("Invalid ladder configuration");
         }
-        _ladders[start] = end;
+        _ladder[start] = end;
     }
+
     public int GetSnakeEndPosition(int start)
     {
-        if (_snakes.TryGetValue(start, out int end))
+        if (_snake.TryGetValue(start, out int end))
         {
             return end;
         }
-
-        throw new ArgumentException("No snake found at the specified position");
+        throw new ArgumentException("No Snake found at the specified position");
     }
+
     public int GetLadderEndPosition(int start)
     {
-        if (_ladders.TryGetValue(start, out int end))
+        if (_ladder.TryGetValue(start, out int end))
         {
             return end;
         }
-
-        throw new ArgumentException("No ladder found at the specified position");
-    }
-    private int GenerateRandomPosition(int minValue, int maxValue)
-    {
-        Random random = new Random();
-        return random.Next(minValue, maxValue + 1);
+        throw new ArgumentException("No Ladder found at the specified position");
     }
 }
