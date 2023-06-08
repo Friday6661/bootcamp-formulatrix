@@ -1,4 +1,5 @@
 namespace ITileLib;
+using TileTypesLib;
 
 public interface ITile
 {

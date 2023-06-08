@@ -1,4 +1,4 @@
-namespace playerLib;
+namespace PlayerLib;
 using IPlayerLib;
 
 public class Player : IPlayer

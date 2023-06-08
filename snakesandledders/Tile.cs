@@ -1,13 +1,6 @@
-namespace TileLib;
+/*namespace TileLib;
 using ITileLib;
-
-public enum TileType
-{
-    Normal,
-    Snake,
-    Ladder
-}
-
+using TileTypesLib;
 public class Tile : ITile
 {
     private int _position;
@@ -29,3 +22,4 @@ public class Tile : ITile
     }
 
 }
+*/
