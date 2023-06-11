@@ -13,6 +13,7 @@ class Program
     {
         // Membuat objek GameRunner
         GameRunner gameRunner = new GameRunner();
+        gameRunner.SetBoardSize(100);
 
         // Membuat beberapa pemain
         Player player1 = new Player(1, "John");
@@ -23,13 +24,7 @@ class Program
         gameRunner.AddPlayer(player1);
         gameRunner.AddPlayer(player2);
         gameRunner.AddPlayer(player3);
-
-        // Membuat objek papan permainan
-        Board board = new Board(100); // Misalnya, papan permainan dengan ukuran 100
-
-        // Mengatur papan permainan ke GameRunner
-        gameRunner.SetBoard(board);
-
+        
         // Memulai permainan
         Console.WriteLine("Press any key to start the game...");
         Console.ReadLine();

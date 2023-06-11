@@ -8,7 +8,7 @@ public class Board : IBoard
     private Dictionary<int, int> _snake;
     private Dictionary<int, int> _ladder;
     private Dictionary<int, TileType> _tile;
-    public Board(int size)
+    public Board(int size/*, Dictionary<int, int> snake, Dictionary<int, int> ladder*/)
     {
         _size = size;
         _snake = new Dictionary<int, int>();

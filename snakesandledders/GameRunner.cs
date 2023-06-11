@@ -31,9 +31,9 @@ class GameRunner
         return _players;
     }
 
-    public void SetBoard(Board board)
+    public void SetBoardSize(int size)
     {
-        _board = board;
+        _board = new Board(size);
     }
 
     public void AddPlayer(Player player)
@@ -56,7 +56,7 @@ class GameRunner
         {
             foreach (Player player in _players)
             {
-                Console.WriteLine("Player: " + player.GetName() + " - Position: " + player.GetPosition());
+                Console.WriteLine("\nPlayer: " + player.GetName() + " - Position: " + player.GetPosition());
                 Console.WriteLine("Press any key to roll the dice for Player " + player.GetName() + "...");
                 Console.ReadLine();
 
@@ -77,16 +77,23 @@ class GameRunner
                     {
                         rollAgain = false;
                     }
+
+                    foreach (Player otherPlayer in _players)
+                    {
+                        Console.WriteLine("Player " + otherPlayer.GetName() + " - Position: " + otherPlayer.GetPosition());
+                    }
                 }
             }
         }
+
+        EndGame();
     }
 
 
     public void RollDice(Player player)
     {
         int roll = _dice.GetRoll();
-        Console.WriteLine("Player " + player.GetName() + " rolled a " + roll);
+        Console.WriteLine("\nPlayer " + player.GetName() + " rolled a " + roll);
         player.SetPosition(player.GetPosition() + roll);
 
         player.SetLastRoll(roll);
@@ -114,30 +121,36 @@ class GameRunner
 
     private bool IsGameFinished()
     {
-    // Cek apakah ada pemain yang sudah mencapai posisi akhir papan atau melebihi posisi akhir
         foreach (Player player in _players)
         {
-            if (player.GetPosition() >= _board.GetSize())
+            int playerPosition = player.GetPosition();
+            if (playerPosition == _board.GetSize())
             {
-                int excessSteps = player.GetPosition() - _board.GetSize();
-                if (excessSteps > 0)
-                {
-                    MoveBackward(player, excessSteps);
-                }
-
-                Console.WriteLine("Player " + player.GetName() + " has reached the end! Game finished.");
+                Console.WriteLine("Player " + player.GetName() + " has reached the end! Game Finished.");
                 return true;
+            }
+            else if (playerPosition > _board.GetSize())
+            {
+                int excessSteps = playerPosition - _board.GetSize();
+                int newPosition = _board.GetSize() - excessSteps;
+                MoveBackward(player, newPosition);
+                Console.WriteLine("Player " + player.GetName() + " exceeded the target position. Moving back " + excessSteps + " steps.");
             }
         }
 
         return false;
     }
 
-    private void MoveBackward(Player player, int steps)
+    private void MoveBackward(Player player, int newPosition)
     {
-        int newPosition = player.GetPosition() - steps;
-        Console.WriteLine("Player " + player.GetName() + " has exceeded the target position. Moving back " + steps + " steps.");
         player.SetPosition(newPosition);
+    }
+
+    private void EndGame()
+    {
+        Console.WriteLine("Game Finished! Press Enter to Exit");
+        Console.ReadLine();
+        Environment.Exit(0);
     }
 
 }
