@@ -1,6 +1,6 @@
 namespace BoardLib;
 using IBoardLib;
-using TileTypesLib;
+using TileTypeLib;
 
 public class Board : IBoard
 {

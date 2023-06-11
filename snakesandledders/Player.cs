@@ -5,7 +5,16 @@ public class Player : IPlayer
 {
     private int _id;
     private string _name;
-    private int _level;
+    private int _position;
+    private int _lastRoll;
+
+    public Player(int id, string name)
+    {
+        _id = id;
+        _name = name;
+        _position = 1;
+        _lastRoll = 0;
+    }
 
     public int GetId()
     {
@@ -27,13 +36,23 @@ public class Player : IPlayer
         _name = name;
     }
 
-    public int GetLevel()
+    public int GetPosition()
     {
-        return _level;
+        return _position;
     }
 
-    public void SetLevel(int level)
+    public void SetPosition(int position)
     {
-        _level = level;
+        _position = position;
+    }
+
+    public int GetLastRoll()
+    {
+        return _lastRoll;
+    }
+
+    public void SetLastRoll(int roll)
+    {
+        _lastRoll = roll;
     }
 }

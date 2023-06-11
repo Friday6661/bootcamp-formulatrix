@@ -1,4 +1,4 @@
-namespace TileTypesLib
+namespace TileTypeLib
 {
     public enum TileType
     {

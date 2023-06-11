@@ -1,70 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 using BoardLib;
-using DiceLib;
+using IBoardLib;
 using PlayerLib;
-using TileTypesLib;
+using IPlayerLib;
+using DiceLib;
+using IDiceLib;
 
-public class Program
+class Program
 {
-    public static void Main(string[] args)
+    static void Main()
     {
-        // Membuat objek board
-        Board board = new Board(100);
+        // Membuat objek GameRunner
+        GameRunner gameRunner = new GameRunner();
 
-        // Menambahkan snakes dan ladders secara otomatis
-        for (int i = 0; i < 10; i++)
+        // Membuat beberapa pemain
+        Player player1 = new Player(1, "John");
+        Player player2 = new Player(2, "Jane");
+        Player player3 = new Player(3, "Mike");
+
+        // Menambahkan pemain ke GameRunner
+        gameRunner.AddPlayer(player1);
+        gameRunner.AddPlayer(player2);
+        gameRunner.AddPlayer(player3);
+
+        // Membuat objek papan permainan
+        Board board = new Board(100); // Misalnya, papan permainan dengan ukuran 100
+
+        // Mengatur papan permainan ke GameRunner
+        gameRunner.SetBoard(board);
+
+        // Memulai permainan
+        Console.WriteLine("Press any key to start the game...");
+        Console.ReadLine();
+
+        gameRunner.StartGame();
+
+        // Melakukan roll dice
+        Console.WriteLine("Press any key to roll the dice...");
+        Console.ReadLine();
+
+        foreach (Player player in gameRunner.GetPlayers())
         {
-            board.AddSnake();
-            board.AddLadder();
+            gameRunner.RollDice(player);
+            gameRunner.MoveForward(player);
         }
 
-        // Membuat objek dadu dengan 6 sisi
-        Dice dice = new Dice(6);
-
-        // Membuat array pemain
-        Player[] players = new Player[4];
-
-        // Menginisialisasi pemain
-        players[0] = new Player();
-        players[1] = new Player();
-        players[2] = new Player();
-        players[3] = new Player();
-
-        // Mengatur id, nama, dan level untuk setiap pemain
-        players[0].SetId(1);
-        players[0].SetName("Player 1");
-        players[0].SetLevel(1);
-
-        players[1].SetId(2);
-        players[1].SetName("Player 2");
-        players[1].SetLevel(1);
-
-        players[2].SetId(3);
-        players[2].SetName("Player 3");
-        players[2].SetLevel(1);
-
-        players[3].SetId(4);
-        players[3].SetName("Player 4");
-        players[3].SetLevel(1);
-
-        // Melakukan giliran untuk setiap pemain
-        foreach (Player player in players)
-        {
-            Console.WriteLine("Player {0} turn:", player.GetName());
-
-            // Menggulir dadu dan memperbarui posisi pemain
-            int roll = dice.GetRoll();
-            int currentPosition = 0;
-            int newPosition = currentPosition + roll;
-
-            Console.WriteLine("Player {0} rolled {1}. Moving from position {2} to position {3}.",
-                player.GetName(), roll, currentPosition, newPosition);
-
-            // Memeriksa tile type di posisi baru
-            TileType tileType = board.GetTileType(newPosition);
-            Console.WriteLine("Tile type at position {0} is {1}.", newPosition, tileType);
-
-            Console.WriteLine();
-        }
+        Console.ReadLine();
     }
 }
