@@ -14,11 +14,11 @@ class GameRunner
     private Dice _dice;
     private Board _board;
 
-    public GameRunner()
+    public GameRunner(Board board)
     {
         _players = new List<Player>();
         _dice = new Dice(6); // Misalnya, dadu 6 sisi
-        _board = new Board(100); // Misalnya, papan permainan dengan ukuran 100
+        _board = board; // Misalnya, papan permainan dengan ukuran 100
     }
 
     public void SetPlayers(List<Player> players)
@@ -45,8 +45,6 @@ class GameRunner
     {
         _players.Remove(player);
     }
-
-    // Metode lain yang mungkin ada dalam GameRunner
 
     public void StartGame()
     {
@@ -93,7 +91,7 @@ class GameRunner
     public void RollDice(Player player)
     {
         int roll = _dice.GetRoll();
-        Console.WriteLine("\nPlayer " + player.GetName() + " rolled a " + roll);
+        Console.WriteLine("\nPlayer " + player.GetName() + " rolled a dice " + roll);
         player.SetPosition(player.GetPosition() + roll);
 
         player.SetLastRoll(roll);
@@ -102,21 +100,33 @@ class GameRunner
     public void MoveForward(Player player)
     {
         int currentPosition = player.GetPosition();
-        TileType tileType = _board.GetTileType(currentPosition);
-        Console.WriteLine("Player " + player.GetName() + " is on a " + tileType + " tile at position " + currentPosition);
-
-        if (tileType == TileType.Snake)
+        int newPosition = currentPosition;
+        //Console.WriteLine("Player " + player.GetName() + " is on a " + tileType + " tile at position " + currentPosition);
+        if (newPosition <= _board.GetSize())
         {
-            int snakeEndPosition = _board.GetSnakeEndPosition(currentPosition);
-            Console.WriteLine("Player " + player.GetName() + " encountered a snake! Moving to position " + snakeEndPosition);
-            player.SetPosition(snakeEndPosition);
+            Console.WriteLine("Player " + player.GetName() + " moves to position " + newPosition);
+            
+            // Check if there is a snake at the new position
+            if (_board.GetSnakes().ContainsKey(newPosition))
+            {
+                int snakeEndPosition = _board.GetSnakes()[newPosition];
+                Console.WriteLine("Player " + player.GetName() + " encountered a snake! Moving to position " + snakeEndPosition);
+                newPosition = snakeEndPosition;
+            }
+        
+            // Check if there is a ladder at the new position
+            else if (_board.GetLadders().ContainsKey(newPosition))
+            {
+                int ladderEndPosition = _board.GetLadders()[newPosition];
+                Console.WriteLine("Player " + player.GetName() + " encountered a ladder! Moving to position " + ladderEndPosition);
+                newPosition = ladderEndPosition;
+            }
         }
-        else if (tileType == TileType.Ladder)
+        else
         {
-            int ladderEndPosition = _board.GetLadderEndPosition(currentPosition);
-            Console.WriteLine("Player " + player.GetName() + " found a ladder! Moving to position " + ladderEndPosition);
-            player.SetPosition(ladderEndPosition);
+            Console.WriteLine("Player " + player.GetName() + " position " + currentPosition);
         }
+        player.SetPosition(newPosition);
     }
 
     private bool IsGameFinished()
@@ -152,5 +162,4 @@ class GameRunner
         Console.ReadLine();
         Environment.Exit(0);
     }
-
 }

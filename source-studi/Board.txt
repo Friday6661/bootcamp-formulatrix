@@ -1,18 +1,19 @@
 namespace BoardLib;
 using IBoardLib;
-//using TileTypeLib;
+using TileTypeLib;
 
 public class Board : IBoard
 {
     private int _size;
     private Dictionary<int, int> _snake;
     private Dictionary<int, int> _ladder;
-
-    public Board(int size)
+    private Dictionary<int, TileType> _tile;
+    public Board(int size/*, Dictionary<int, int> snake, Dictionary<int, int> ladder*/)
     {
         _size = size;
         _snake = new Dictionary<int, int>();
         _ladder = new Dictionary<int, int>();
+        _tile = new Dictionary<int, TileType>();
     }
 
     public int GetSize()
@@ -25,6 +26,37 @@ public class Board : IBoard
         _size = size;
     }
 
+    public void SetTileType(int position, TileType type)
+    {
+        if (position < 0 || position >= _size)
+        {
+            throw new ArgumentOutOfRangeException("Invalid position");
+        }
+        _tile[position] = type;
+    }
+
+    public TileType GetTileType(int position)
+    {
+        if (!_tile.ContainsKey(position))
+        {
+            return TileType.Normal;
+        }
+        return _tile[position];
+    }
+
+    private void InitializeSnakes()
+    {
+        _snake.Add(14, 7);
+        _snake.Add(97, 77);
+    }
+
+    private void InitializeLadders()
+    {
+        _ladder.Add(3, 50);
+        _ladder.Add(15, 65)
+    }
+}
+/*
     public void AddSnake(int start, int end)
     {
         if (start <= end)
@@ -41,16 +73,6 @@ public class Board : IBoard
             throw new ArgumentException("Invalid ladder configuration");
         }
         _ladder[start] = end;
-    }
-
-    public Dictionary<int, int> GetSnakes()
-    {
-        return _snake;
-    }
-
-    public Dictionary<int, int> GetLadders()
-    {
-        return _ladder;
     }
 
     public int GetSnakeEndPosition(int start)
@@ -70,4 +92,4 @@ public class Board : IBoard
         }
         throw new ArgumentException("No Ladder found at the specified position");
     }
-}
+}*/
