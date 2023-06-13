@@ -7,12 +7,13 @@ public class Player : IPlayer
     private string _name;
     private int _position;
     private int _lastRoll;
+    private static int _nextId = 1;
 
-    public Player(int id, string name)
+    public Player(string name)
     {
-        _id = id;
+        _id = _nextId;
         _name = name;
-        _position = 1;
+        _position = 0;
         _lastRoll = 0;
     }
 

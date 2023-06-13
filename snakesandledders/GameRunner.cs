@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+namespace GameRunnerLib;
 using BoardLib;
 using IBoardLib;
 using PlayerLib;
@@ -13,6 +12,8 @@ class GameRunner
     private List<Player> _players;
     private Dice _dice;
     private Board _board;
+
+    public event Action<string> DisplayMessage;
 
     public GameRunner(Board board)
     {
@@ -36,97 +37,112 @@ class GameRunner
         _board = new Board(size);
     }
 
-    public void AddPlayer(Player player)
+    public void AddPlayer(string name)
     {
-        _players.Add(player);
+        _players.Add(new Player(name));
     }
 
-    public void RemovePlayer(Player player)
+    public void RemovePlayer(string name)
     {
-        _players.Remove(player);
+        _players.Remove(new Player(name));
     }
 
     public void StartGame()
     {
-        Console.WriteLine("Game Started!");
-
+        DisplayMessage?.Invoke("Game Started");
         while (!IsGameFinished())
         {
             foreach (Player player in _players)
             {
-                Console.WriteLine("\nPlayer: " + player.GetName() + " - Position: " + player.GetPosition());
-                Console.WriteLine("Press any key to roll the dice for Player " + player.GetName() + "...");
+                PlayerInfo(player);
                 Console.ReadLine();
+                Console.Clear();
 
                 bool rollAgain = true;
                 int totalRolls = 0;
 
-                while (rollAgain && totalRolls < 3) // Batasi jumlah roll tambahan maksimal menjadi 3
+                while (rollAgain && totalRolls < 3)
                 {
                     RollDice(player);
                     MoveForward(player);
                     totalRolls++;
 
-                    if (player.GetPosition() < _board.GetSize() && player.GetLastRoll() == 6)
+                    if (ShouldRollAgain(player))
                     {
-                        Console.WriteLine("Player " + player.GetName() + " rolled a 6! Roll again.");
+                        DisplayMessage?.Invoke($"Player {player.GetName()} roll a 6! Roll Again.");
                     }
                     else
                     {
                         rollAgain = false;
                     }
 
-                    foreach (Player otherPlayer in _players)
-                    {
-                        Console.WriteLine("Player " + otherPlayer.GetName() + " - Position: " + otherPlayer.GetPosition());
-                    }
+                    AllPlayerPositions();
                 }
             }
         }
-
         EndGame();
     }
-
+    private void PlayerInfo(Player player)
+    {
+        DisplayMessage?.Invoke($"\nPlayer: {player.GetName()} Position: {player.GetPosition()}");
+        DisplayMessage?.Invoke($"Press Enter to roll the dice for Player {player.GetName()} ...");
+    }
+    private bool ShouldRollAgain(Player player)
+    {
+        return player.GetPosition() < _board.GetSize() && player.GetLastRoll() == 6;
+    }
+    private void AllPlayerPositions()
+    {
+        foreach (Player player in _players)
+        {
+            DisplayMessage?.Invoke($"Player {player.GetName()} Position: {player.GetPosition()}");
+        }
+    }
 
     public void RollDice(Player player)
     {
         int roll = _dice.GetRoll();
-        Console.WriteLine("\nPlayer " + player.GetName() + " rolled a dice " + roll);
+        DisplayMessage?.Invoke($"\nPlayer {player.GetName()} rolled a dice {roll}");
         player.SetPosition(player.GetPosition() + roll);
-
         player.SetLastRoll(roll);
     }
-
     public void MoveForward(Player player)
     {
         int currentPosition = player.GetPosition();
         int newPosition = currentPosition;
-        //Console.WriteLine("Player " + player.GetName() + " is on a " + tileType + " tile at position " + currentPosition);
+
         if (newPosition <= _board.GetSize())
         {
-            Console.WriteLine("Player " + player.GetName() + " moves to position " + newPosition);
-            
-            // Check if there is a snake at the new position
+            DisplayMessage?.Invoke($"Player {player.GetName()} moves to position {newPosition}");
             if (_board.GetSnakes().ContainsKey(newPosition))
             {
-                int snakeEndPosition = _board.GetSnakes()[newPosition];
-                Console.WriteLine("Player " + player.GetName() + " encountered a snake! Moving to position " + snakeEndPosition);
-                newPosition = snakeEndPosition;
+                newPosition = HandleSnakeEncounter(player, newPosition);
             }
-        
-            // Check if there is a ladder at the new position
             else if (_board.GetLadders().ContainsKey(newPosition))
             {
-                int ladderEndPosition = _board.GetLadders()[newPosition];
-                Console.WriteLine("Player " + player.GetName() + " encountered a ladder! Moving to position " + ladderEndPosition);
-                newPosition = ladderEndPosition;
+                newPosition = HandleLaddersEncounter(player, newPosition);
             }
         }
         else
         {
-            Console.WriteLine("Player " + player.GetName() + " position " + currentPosition);
+            //DisplayMessage?.Invoke($"Player {player.GetName()} position {currentPosition}");
+            newPosition = _board.GetSize() - (newPosition - _board.GetSize());
+            DisplayMessage?.Invoke($"Player {player.GetName()} exceeded the target position. Moving back to position {newPosition}");
         }
         player.SetPosition(newPosition);
+    }
+
+    private int HandleSnakeEncounter(Player player, int currentPosition)
+    {
+        int snakeEndPosition = _board.GetSnakes()[currentPosition];
+        DisplayMessage?.Invoke($"Player {player.GetName()} encountered a snake! Moving to position {snakeEndPosition}");
+        return snakeEndPosition;
+    }
+    private int HandleLaddersEncounter(Player player, int currentPosition)
+    {
+        int ladderEndPosition = _board.GetLadders()[currentPosition];
+        DisplayMessage?.Invoke($"Player {player.GetName()} encountered a ladder! Moving to position {ladderEndPosition}");
+        return ladderEndPosition;
     }
 
     private bool IsGameFinished()
@@ -136,29 +152,30 @@ class GameRunner
             int playerPosition = player.GetPosition();
             if (playerPosition == _board.GetSize())
             {
-                Console.WriteLine("Player " + player.GetName() + " has reached the end! Game Finished.");
+                DisplayMessage?.Invoke($"Player {player.GetName()} has reached the end! Game Finished.");
                 return true;
-            }
+            }/*
             else if (playerPosition > _board.GetSize())
             {
                 int excessSteps = playerPosition - _board.GetSize();
                 int newPosition = _board.GetSize() - excessSteps;
                 MoveBackward(player, newPosition);
-                Console.WriteLine("Player " + player.GetName() + " exceeded the target position. Moving back " + excessSteps + " steps.");
-            }
+                DisplayMessage?.Invoke($"Player {player.GetName()} exceeded the target position. Moving back {excessSteps} steps.");
+            }*/
         }
 
         return false;
     }
-
+/*
     private void MoveBackward(Player player, int newPosition)
     {
         player.SetPosition(newPosition);
     }
-
+*/
     private void EndGame()
     {
-        Console.WriteLine("Game Finished! Press Enter to Exit");
+        //Console.WriteLine("Game Finished! Press Enter to Exit");
+        DisplayMessage?.Invoke("Game Finished! Press Enter to Exit");
         Console.ReadLine();
         Environment.Exit(0);
     }
