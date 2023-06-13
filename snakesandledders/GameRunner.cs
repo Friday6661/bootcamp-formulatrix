@@ -56,7 +56,6 @@ class GameRunner
             {
                 PlayerInfo(player);
                 Console.ReadLine();
-                Console.Clear();
 
                 bool rollAgain = true;
                 int totalRolls = 0;
@@ -152,7 +151,8 @@ class GameRunner
             int playerPosition = player.GetPosition();
             if (playerPosition == _board.GetSize())
             {
-                DisplayMessage?.Invoke($"Player {player.GetName()} has reached the end! Game Finished.");
+                DisplayMessage?.Invoke($"Player {player.GetName()} has a Winner! Game Finished.");
+                //RemovePlayer(player.GetName());
                 return true;
             }/*
             else if (playerPosition > _board.GetSize())
@@ -175,7 +175,7 @@ class GameRunner
     private void EndGame()
     {
         //Console.WriteLine("Game Finished! Press Enter to Exit");
-        DisplayMessage?.Invoke("Game Finished! Press Enter to Exit");
+        DisplayMessage?.Invoke("Press Enter to Exit Game!");
         Console.ReadLine();
         Environment.Exit(0);
     }
