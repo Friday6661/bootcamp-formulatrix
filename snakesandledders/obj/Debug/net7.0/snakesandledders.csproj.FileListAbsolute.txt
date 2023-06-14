@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/snakesandledders/bin/Debug/net7.0/snakesandledders
+/home/friday/bootcamp-formulatrix/snakesandledders/bin/Debug/net7.0/snakesandledders.deps.json
+/home/friday/bootcamp-formulatrix/snakesandledders/bin/Debug/net7.0/snakesandledders.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/snakesandledders/bin/Debug/net7.0/snakesandledders.dll
+/home/friday/bootcamp-formulatrix/snakesandledders/bin/Debug/net7.0/snakesandledders.pdb
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.dll
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/refint/snakesandledders.dll
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.pdb
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/snakesandledders.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/snakesandledders/obj/Debug/net7.0/ref/snakesandledders.dll

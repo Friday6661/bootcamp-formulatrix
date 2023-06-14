@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/generic/bin/Debug/net7.0/generic
+/home/friday/bootcamp-formulatrix/generic/bin/Debug/net7.0/generic.deps.json
+/home/friday/bootcamp-formulatrix/generic/bin/Debug/net7.0/generic.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/generic/bin/Debug/net7.0/generic.dll
+/home/friday/bootcamp-formulatrix/generic/bin/Debug/net7.0/generic.pdb
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.dll
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/refint/generic.dll
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.pdb
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/generic.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/generic/obj/Debug/net7.0/ref/generic.dll
