@@ -52,7 +52,8 @@ public class Board : IBoard
     {
         return _ladder;
     }
-
+}
+/*
     public int GetSnakeEndPosition(int start)
     {
         if (_snake.TryGetValue(start, out int end))
@@ -71,3 +72,4 @@ public class Board : IBoard
         throw new ArgumentException("No Ladder found at the specified position");
     }
 }
+*/
