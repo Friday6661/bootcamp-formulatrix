@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/home/friday/.nuget/packages/": {}
+    "C:\\Users\\Formulatrix\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/friday/bootcamp-formulatrix/gameSederhana/gameSederhana.csproj",
+      "projectUniqueName": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\gameSederhana\\gameSederhana.csproj",
       "projectName": "gameSederhana",
-      "projectPath": "/home/friday/bootcamp-formulatrix/gameSederhana/gameSederhana.csproj",
-      "packagesPath": "/home/friday/.nuget/packages/",
-      "outputPath": "/home/friday/bootcamp-formulatrix/gameSederhana/obj/",
+      "projectPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\gameSederhana\\gameSederhana.csproj",
+      "packagesPath": "C:\\Users\\Formulatrix\\.nuget\\packages\\",
+      "outputPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\gameSederhana\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/friday/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Formulatrix\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
