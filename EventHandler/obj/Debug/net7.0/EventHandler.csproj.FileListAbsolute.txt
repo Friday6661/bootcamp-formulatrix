@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/EventHandler/bin/Debug/net7.0/EventHandler
+/home/friday/bootcamp-formulatrix/EventHandler/bin/Debug/net7.0/EventHandler.deps.json
+/home/friday/bootcamp-formulatrix/EventHandler/bin/Debug/net7.0/EventHandler.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/EventHandler/bin/Debug/net7.0/EventHandler.dll
+/home/friday/bootcamp-formulatrix/EventHandler/bin/Debug/net7.0/EventHandler.pdb
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.dll
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/refint/EventHandler.dll
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.pdb
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/EventHandler.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/EventHandler/obj/Debug/net7.0/ref/EventHandler.dll

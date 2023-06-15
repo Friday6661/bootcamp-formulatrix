@@ -7,8 +7,6 @@ using DiceLib;
 using IDiceLib;
 using System;
 using System.Collections.Generic;
-
-
 class NewGameRunner
     {
         private List<Player> _players;
@@ -54,6 +52,41 @@ class NewGameRunner
         public void RemovePlayer(string name)
         {
             _players.RemoveAll(player => player.GetName() == name);
+        }
+
+        public void SetupPlayer()
+        {
+            DisplayMessage?.Invoke("Enter the Number of Players: \r");
+            int playerCount = GetPlayerCountFromInput();
+            GetPlayerNames(playerCount);
+            ShowPlayerList();
+        }
+        private int GetPlayerCountFromInput()
+        {
+            int playerCount;
+            while(!int.TryParse(Console.ReadLine(), out playerCount))
+            {
+                DisplayMessage?.Invoke("Invalid input. Please Enter a Valid Number");
+            }
+            return playerCount;
+        }
+
+        private void GetPlayerNames(int playerCount)
+        {
+            for (int i = 1; i <= playerCount; i++)
+            {
+                DisplayMessage?.Invoke($"Enter the Name of Players {i}: \r");
+                string name = Console.ReadLine();
+                AddPlayer(name);
+                Console.Clear();
+            }
+        }
+        private void ShowPlayerList()
+        {
+            foreach (Player player in GetPlayers())
+            {
+                DisplayMessage?.Invoke(player.GetName());
+            }
         }
 
         public void StartGame()

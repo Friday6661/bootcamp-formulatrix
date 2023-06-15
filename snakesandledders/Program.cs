@@ -37,9 +37,11 @@ namespace SnakesandLadders
 
             // Memulai permainan
             Display display = new(gameRunner);
-            display.Start();
+            Console.Clear();
+            display.DisplaySetup();
 
             Console.ReadLine();
+            Console.Clear();
         }
     }
 }
