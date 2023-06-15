@@ -1,5 +1,6 @@
 namespace DiceLib;
 using IDiceLib;
+using NewGameRunnerLib;
 
 public class Dice : IDice
 {

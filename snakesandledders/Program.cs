@@ -7,7 +7,7 @@ using IPlayerLib;
 using DiceLib;
 using IDiceLib;
 using DisplayLib;
-using GameRunnerLib;
+using NewGameRunnerLib;
 
 namespace SnakesandLadders
 {
@@ -33,7 +33,7 @@ namespace SnakesandLadders
             board.AddLadder(8, 13);
             board.AddLadder(40,99);
 
-            GameRunner gameRunner = new(board);
+            NewGameRunner gameRunner = new(board);
 
             // Memulai permainan
             Display display = new(gameRunner);

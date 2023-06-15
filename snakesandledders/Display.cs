@@ -1,12 +1,12 @@
 namespace DisplayLib;
-using GameRunnerLib;
+using NewGameRunnerLib;
 using PlayerLib;
 
 class Display
 {
-    private GameRunner _gameRunner;
+    private NewGameRunner _gameRunner;
 
-    public Display(GameRunner gameRunner)
+    public Display(NewGameRunner gameRunner)
     {
         _gameRunner = gameRunner;
         _gameRunner.DisplayMessage += DisplayMessageHandler;
@@ -22,8 +22,9 @@ class Display
         Console.Clear();
 
         ShowPlayerList();
-        Console.WriteLine("Press Enter to Start the Game");
+        Console.WriteLine("Press Enter! to Start the Game");
         Console.ReadLine();
+        Console.Clear();
         _gameRunner.StartGame();
     }
     private int GetPlayerCountFromInput()
@@ -50,7 +51,7 @@ class Display
         Console.WriteLine("List of Players: ");
         foreach (Player player in _gameRunner.GetPlayers())
         {
-            Console.WriteLine($"Player Name: {player.GetName()}");
+            Console.WriteLine($"---{player.GetName()}");
         }
     }
     private void DisplayMessageHandler(string message)

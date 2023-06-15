@@ -1,4 +1,4 @@
-namespace GameRunnerLib;
+/*namespace GameRunnerLib;
 using BoardLib;
 using IBoardLib;
 using PlayerLib;
@@ -162,21 +162,21 @@ class GameRunner
                 MoveBackward(player, newPosition);
                 DisplayMessage?.Invoke($"Player {player.GetName()} exceeded the target position. Moving back {excessSteps} steps.");
             }*/
-        }
+//        }
 
-        return false;
-    }
+//        return false;
+//    }
 /*
     private void MoveBackward(Player player, int newPosition)
     {
         player.SetPosition(newPosition);
     }
 */
-    private void EndGame()
-    {
-        //Console.WriteLine("Game Finished! Press Enter to Exit");
-        DisplayMessage?.Invoke("Press Enter to Exit Game!");
-        Console.ReadLine();
-        Environment.Exit(0);
-    }
-}
+//    private void EndGame()
+//    {
+//        //Console.WriteLine("Game Finished! Press Enter to Exit");
+//        DisplayMessage?.Invoke("Press Enter to Exit Game!");
+//        Console.ReadLine();
+//        Environment.Exit(0);
+//    }
+//}
