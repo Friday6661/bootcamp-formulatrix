@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/CobaBoard/bin/Debug/net7.0/CobaBoard
+/home/friday/bootcamp-formulatrix/CobaBoard/bin/Debug/net7.0/CobaBoard.deps.json
+/home/friday/bootcamp-formulatrix/CobaBoard/bin/Debug/net7.0/CobaBoard.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/CobaBoard/bin/Debug/net7.0/CobaBoard.dll
+/home/friday/bootcamp-formulatrix/CobaBoard/bin/Debug/net7.0/CobaBoard.pdb
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.dll
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/refint/CobaBoard.dll
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.pdb
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/CobaBoard.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/CobaBoard/obj/Debug/net7.0/ref/CobaBoard.dll

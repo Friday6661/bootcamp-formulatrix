@@ -16,12 +16,13 @@ class NewGameRunner
         private Dictionary<Player, int> _lastRollValue;
 
         public event Action<string> DisplayMessage;
+        public event Action<string> inputUser;
 
         public NewGameRunner(Board board)
         {
             _players = new List<Player>();
             _dice = new Dice(6); // Misalnya, dadu 6 sisi
-            _board = board; // Misalnya, papan permainan dengan ukuran 100
+            _board = board;
             _playerPositions = new Dictionary<Player, int>();
             _lastRollValue = new Dictionary<Player, int>();
         }
@@ -88,6 +89,67 @@ class NewGameRunner
                 DisplayMessage?.Invoke(player.GetName());
             }
         }
+        public void DrawBoard()
+        {
+            int numRows = (int)Math.Ceiling((double)_board.GetSize()/10);
+            for (int i = numRows; i >= 1; i--)
+            {
+                // Baris atas petak
+                for (int j = 1; j <= 10; j++)
+                {
+                    Console.Write(" _____");
+                }
+                Console.WriteLine();
+
+                //Isi petak
+                for (int k = 0; k <= 3; k++)
+                {
+                    for (int j = 1; j <= 10; j++)
+                    {
+                        int index;
+                        if (i % 2 == 1)
+                        {
+                            index = ((i-1) * 10) +j;
+                        }
+                        else
+                        {
+                            index = (i * 10) - j + 1;
+                        }
+
+                        if (index <= _board.GetSize() && k == 0)
+                        {
+                            Console.Write($"|{index.ToString().PadLeft(3).PadRight(5)}");
+                        }
+                        else if (k == 2 && _playerPositions.ContainsValue(index))
+                        {
+                            Player player = GetPlayerAtPosition(index);
+                            Console.Write($"|{player.GetName().Substring(0, 1)}    ");
+                        }
+                        else
+                        {
+                            Console.Write("|     ");
+                        }
+                    }
+                    Console.WriteLine("|");
+                }
+                for (int j = 1; j <= 10; j++)
+                {
+                    Console.Write("|_____");
+                }
+                Console.WriteLine("|");
+            }
+        }
+        private Player GetPlayerAtPosition(int position)
+        {
+            foreach (KeyValuePair<Player, int> entry in _playerPositions)
+            {
+                if (entry.Value == position)
+                {
+                    return entry.Key;
+                }
+            }
+            return null;
+        }
 
         public void StartGame()
         {
@@ -116,8 +178,7 @@ class NewGameRunner
                         {
                             rollAgain = false;
                         }
-
-                        DisplayAllPlayerPositions();
+                        AllPlayerPositions();
                     }
                 }
             }
@@ -135,7 +196,7 @@ class NewGameRunner
             return _lastRollValue[player] == 6;
         }
 
-        private void DisplayAllPlayerPositions()
+        private void AllPlayerPositions()
         {
             foreach (var entry in _playerPositions)
             {
@@ -173,7 +234,7 @@ class NewGameRunner
                 newPosition = _board.GetSize() - (newPosition - _board.GetSize());
                 DisplayMessage?.Invoke($"Player {player.GetName()} exceeded the target position. Moving back to position {newPosition}");
             }
-
+            DrawBoard();
             SetPlayerPosition(player, newPosition);
         }
 
