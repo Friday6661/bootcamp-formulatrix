@@ -16,7 +16,7 @@ class NewGameRunner
         private Dictionary<Player, int> _lastRollValue;
 
         public event Action<string> DisplayMessage;
-        public event Action<string> inputUser;
+        //public event Action<string> inputUser;
 
         public NewGameRunner(Board board)
         {
@@ -94,14 +94,14 @@ class NewGameRunner
             int numRows = (int)Math.Ceiling((double)_board.GetSize()/10);
             for (int i = numRows; i >= 1; i--)
             {
-                // Baris atas petak
+                
                 for (int j = 1; j <= 10; j++)
                 {
                     Console.Write(" _____");
                 }
                 Console.WriteLine();
 
-                //Isi petak
+                
                 for (int k = 0; k <= 3; k++)
                 {
                     for (int j = 1; j <= 10; j++)
