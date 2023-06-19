@@ -86,7 +86,7 @@ class NewGameRunner
         {
             foreach (Player player in GetPlayers())
             {
-                DisplayMessage?.Invoke(player.GetName());
+                player.GetName();
             }
         }
         public void DrawBoard()
