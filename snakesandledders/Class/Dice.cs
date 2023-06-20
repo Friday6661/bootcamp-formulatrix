@@ -2,7 +2,7 @@ namespace DiceLib;
 using IDiceLib;
 using NewGameRunnerLib;
 
-public class Dice : IDice
+public class IDice : IDice
 {
     private int _numberOfSides;
     private Random _random;
@@ -12,7 +12,7 @@ public class Dice : IDice
         get { return _numberOfSides; }
         set { _numberOfSides = value; }
     }
-    public Dice(int numberOfSides)
+    public IDice(int numberOfSides)
     {
         _numberOfSides = numberOfSides;
         _random = new Random();

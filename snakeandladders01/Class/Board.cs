@@ -4,8 +4,8 @@ namespace BoardLib;
 public class Board : IBoard
 {
     private int _size;
-    private Dictionary<int, int> _snake;
-    private Dictionary<int, int> _ladder;
+    private IDictionary<int, int> _snake;
+    private IDictionary<int, int> _ladder;
 
     public Board(int size)
     {
@@ -35,7 +35,7 @@ public class Board : IBoard
     {
         _snake[head] = tail;
     }
-    public Dictionary<int, int> GetSnake()
+    public IDictionary<int, int> GetSnake()
     {
         return _snake;
     }
@@ -47,7 +47,7 @@ public class Board : IBoard
     {
         _ladder[bottom] = top;
     }
-    public Dictionary<int, int> GetLadder()
+    public IDictionary<int, int> GetLadder()
     {
         return _ladder;
     }

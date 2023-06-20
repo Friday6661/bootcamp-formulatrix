@@ -10,7 +10,7 @@ using System.Collections.Generic;
 class NewGameRunner
     {
         private List<Player> _players;
-        private Dice _dice;
+        private DiceLib.IDice _dice;
         private Board _board;
         private Dictionary<Player, int> _playerPositions;
         private Dictionary<Player, int> _lastRollValue;

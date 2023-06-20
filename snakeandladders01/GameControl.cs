@@ -18,11 +18,11 @@ class GameControl
     private IDictionary<IPlayer, int> _lastRollValue;
     public GameControl()
     {
-        _players = new IList<IPlayer>();
+        _players = new List<IPlayer>();
         _dice = new Dice(0);
         _board = new Board(0);
-        _playerPosition = new IDictionary<IPlayer, int>();
-        _lastRollValue = new IDictionary<IPlayer, int>();
+        _playerPosition = new Dictionary<IPlayer, int>();
+        _lastRollValue = new Dictionary<IPlayer, int>();
     }
     
     // Setup Players
@@ -60,6 +60,14 @@ class GameControl
         }
         return string.Empty;
     }
+    public string GetPlayerID(IPlayer player)
+    {
+        if (player != null)
+        {
+            return player.GetId();
+        }
+        return string.Empty;
+    }
     public IPlayer GetPlayerAtPosition(int position)
     {
         foreach (KeyValuePair<IPlayer, int> entry in _playerPosition)
@@ -73,7 +81,7 @@ class GameControl
     } 
     public IList<IPlayer> GetPlayersInPosition(int position)
     {
-        IList<IPlayer> playersInPosition = new IList<IPlayer>();
+        IList<IPlayer> playersInPosition = new List<IPlayer>();
         foreach (KeyValuePair<IPlayer, int> entry in _playerPosition)
         {
             if (entry.Value == position)
@@ -116,6 +124,11 @@ class GameControl
     public int GetNumberOfSides()
     {
         return _dice.GetNumberOfSides();
+    }
+    public void RollDice(IPlayer player)
+    {
+        int roll = _dice.GetRoll();
+        _lastRollValue[player] = roll;
     }
     public bool SetRollAgain(IPlayer player, bool rollAgain)
     {
@@ -181,4 +194,46 @@ class GameControl
         }
         return 0;
     }
+    public int GetLadderBottom(int topPosition)
+    {
+        foreach (var ladder in _board.GetLadder())
+        {
+            if (ladder.Value == topPosition)
+            {
+                return ladder.Key;
+            }
+        }
+        return 0;
+    }
+    public int GetLadderTop(int bottomPosition)
+    {
+        foreach (var ladder in _board.GetLadder())
+        {
+            if (ladder.Key == bottomPosition)
+            {
+                return ladder.Value;
+            }
+        }
+        return 0;
+    }
+    public int HandleSnakeEncounter(int currentPosition)
+    {
+        return GetSnakeTail(currentPosition);
+    }
+    public int HandleLadderEncounter(int currentPosition)
+    {
+        return GetLadderTop(currentPosition);
+    }
+    public bool SetGameFinished()
+    {
+        foreach (IPlayer player in _players)
+        {
+            if (GetPlayerPosition(player) == _board.GetSize())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

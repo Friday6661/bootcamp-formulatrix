@@ -16,7 +16,7 @@ class Program
         GameControl gameControl = new GameControl();
 
         // Menambahkan pemain ke GameControl
-        List<IPlayer> players = new List<IPlayer>()
+        IList<IPlayer> players = new List<IPlayer>()
         {
             new Player("Player 1"),
             new Player("Player 2")
@@ -56,10 +56,12 @@ class Program
         }
 
         // Mengakses pemain dan dadu
-        List<IPlayer> retrievedPlayers = gameControl.GetPlayers();
+        IList<IPlayer> retrievedPlayers = gameControl.GetPlayers();
+        idPlayer = gameControl.GetPlayerID();
         Dice retrievedDice = gameControl.GetDice();
 
         Console.WriteLine($"Number of players: {retrievedPlayers.Count}");
+        Console.WriteLine($"ID Players: {idPlayer}");
         Console.WriteLine($"Number of sides on the dice: {retrievedDice.GetNumberOfSides()}");
     }
 }
