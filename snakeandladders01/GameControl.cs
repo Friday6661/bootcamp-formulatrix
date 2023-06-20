@@ -11,22 +11,22 @@ namespace GameControlLib;
 
 class GameControl
 {
-    private List<IPlayer> _players;
+    private IList<IPlayer> _players;
     private Dice _dice;
     private Board _board;
-    private Dictionary<IPlayer, int> _playerPosition;
-    private Dictionary<IPlayer, int> _lastRollValue;
+    private IDictionary<IPlayer, int> _playerPosition;
+    private IDictionary<IPlayer, int> _lastRollValue;
     public GameControl()
     {
-        _players = new List<IPlayer>();
+        _players = new IList<IPlayer>();
         _dice = new Dice(0);
         _board = new Board(0);
-        _playerPosition = new Dictionary<IPlayer, int>();
-        _lastRollValue = new Dictionary<IPlayer, int>();
+        _playerPosition = new IDictionary<IPlayer, int>();
+        _lastRollValue = new IDictionary<IPlayer, int>();
     }
     
     // Setup Players
-    public bool SetPlayers(List<IPlayer> players)
+    public bool SetPlayers(IList<IPlayer> players)
     {
         if (players.Count >= 2 && players.Count <= 4)
         {
@@ -35,7 +35,7 @@ class GameControl
         }
         return false;
     }
-    public List<IPlayer> GetPlayers()
+    public IList<IPlayer> GetPlayers()
     {
         return _players;
     }
@@ -71,9 +71,9 @@ class GameControl
         }
         return null;
     } 
-    public List<IPlayer> GetPlayersInPosition(int position)
+    public IList<IPlayer> GetPlayersInPosition(int position)
     {
-        List<IPlayer> playersInPosition = new List<IPlayer>();
+        IList<IPlayer> playersInPosition = new IList<IPlayer>();
         foreach (KeyValuePair<IPlayer, int> entry in _playerPosition)
         {
             if (entry.Value == position)
