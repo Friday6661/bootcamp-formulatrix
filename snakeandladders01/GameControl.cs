@@ -26,6 +26,10 @@ class GameControl
     }
     
     // Setup Players
+    public void AddPlayer(string name)
+    {
+        _players.Add(new Player(name));
+    }
     public bool SetPlayers(IList<IPlayer> players)
     {
         if (players.Count >= 2 && players.Count <= 4)
@@ -39,6 +43,10 @@ class GameControl
     {
         return _players;
     }
+    public int GetPlayersCount()
+    {
+        return _players.Count();
+    }
     public bool SetPlayerName(IPlayer player, string name)
     {
         if (GetPlayersCount() != null && name.Length > 2)
@@ -47,10 +55,6 @@ class GameControl
             return true;
         }
         return false;
-    }
-    public int GetPlayersCount()
-    {
-        return _players.Count();
     }
     public string GetPlayerName(IPlayer player)
     {
@@ -106,6 +110,14 @@ class GameControl
             _playerPosition[player] = position;
         }
         return true;
+    }
+    public IList<string> GetAllPlayerNames()
+    {
+        return _players.Select(player => player.GetName()).ToList();
+    }
+    public IList<string> GetAllPlayerIDs()
+    {
+        return _players.Select(player => player.GetId()).ToList();
     }
 
     // Setup Dice

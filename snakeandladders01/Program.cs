@@ -1,67 +1,34 @@
-﻿using IBoardLib;
-using IDiceLib;
-using IPlayerLib;
+﻿using BoardLib;
+using IBoardLib;
 using DiceLib;
-using BoardLib;
+using IDiceLib;
 using PlayerLib;
+using IPlayerLib;
 using GameControlLib;
-using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using ProgramSetupPlayerLib;
 
-class Program
+namespace SnakesAndLadders
 {
-    static void Main(string[] args)
+    partial class Program
     {
-        // Membuat objek GameControl
-        GameControl gameControl = new GameControl();
+        static GameControl gameControl = new GameControl();
+        static void Main(string[] args)
+        {
+            int playerCount = PlayerSetup.GetPlayersFromUser();
+            PlayerSetup.GetPlayerNames(playerCount);
 
-        // Menambahkan pemain ke GameControl
-        IList<IPlayer> players = new List<IPlayer>()
-        {
-            new Player("Player 1"),
-            new Player("Player 2")
-        };
-        bool isSetPlayersSuccess = gameControl.SetPlayers(players);
-        if (isSetPlayersSuccess)
-        {
-            Console.WriteLine("Players added successfully!");
-        }
-        else
-        {
-            Console.WriteLine("Failed to set players. Invalid number of players.");
-        }
+            Console.WriteLine("===========[Main Program]===========");
+            Console.WriteLine("Number of players: " + playerCount);
+            Console.WriteLine("Player names:");
+            foreach (var player in gameControl.GetPlayers())
+            {
+                Console.WriteLine(gameControl.GetPlayerName(player));
+            }
 
-        // Mengatur dadu
-        Dice dice = new Dice(6);
-        bool isSetDiceSuccess = gameControl.SetDice(dice);
-        if (isSetDiceSuccess)
-        {
-            Console.WriteLine("Dice set successfully!");
+            Console.ReadLine();
         }
-        else
-        {
-            Console.WriteLine("Failed to set dice. Dice object is null.");
-        }
-
-        // Mengatur papan
-        Board board = new Board(100);
-        bool isSetBoardSuccess = gameControl.SetBoard(board);
-        if (isSetBoardSuccess)
-        {
-            Console.WriteLine("Board set successfully!");
-        }
-        else
-        {
-            Console.WriteLine("Failed to set board. Board object is null.");
-        }
-
-        // Mengakses pemain dan dadu
-        IList<IPlayer> retrievedPlayers = gameControl.GetPlayers();
-        idPlayer = gameControl.GetPlayerID();
-        Dice retrievedDice = gameControl.GetDice();
-
-        Console.WriteLine($"Number of players: {retrievedPlayers.Count}");
-        Console.WriteLine($"ID Players: {idPlayer}");
-        Console.WriteLine($"Number of sides on the dice: {retrievedDice.GetNumberOfSides()}");
     }
 }
