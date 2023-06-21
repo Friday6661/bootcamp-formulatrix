@@ -4,6 +4,7 @@ using PlayerLib;
 using IPlayerLib;
 using DiceLib;
 using IDiceLib;
+using CellTypeLib;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,8 +15,9 @@ class GameControl
     private IList<IPlayer> _players;
     private Dice _dice;
     private Board _board;
-    private IDictionary<IPlayer, int> _playerPosition;
-    private IDictionary<IPlayer, int> _lastRollValue;
+    private CellType _cellType;
+    private Dictionary<IPlayer, int> _playerPosition;
+    private Dictionary<IPlayer, int> _lastRollValue;
     public GameControl()
     {
         _players = new List<IPlayer>();
@@ -119,6 +121,45 @@ class GameControl
     {
         return _players.Select(player => player.GetId()).ToList();
     }
+    public IList<IPlayer> GetPlayersAtFinished()
+    {
+        IList<IPlayer> playersAtFinished = new List<IPlayer>();
+        foreach (var player in _players)
+        {
+            if (GetPlayerPosition(player) == _board.GetSize())
+            {
+                playersAtFinished.Add(player);
+            }
+        }
+        return playersAtFinished;
+    }
+    public void MovePlayer(IPlayer player)
+    {
+        int currentPosition = GetPlayerPosition(player);
+        int newPosition = currentPosition + _lastRollValue[player];
+        if (newPosition < _board.GetSize())
+        {
+            switch (GetCellType(newPosition))
+            {
+                case CellType.SnakeHead:
+                    newPosition = HandleSnakeEncounter(player, newPosition);
+                    break;
+                case CellType.LadderBottom:
+                    newPosition = HandleLadderEncounter(player, newPosition);
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (newPosition > _board.GetSize())
+        {
+            newPosition = _board.GetSize() - (newPosition - _board.GetSize());
+        }
+        else if (newPosition == _board.GetSize())
+        {
+            IList<IPlayer> playersAtFinished = GetPlayersAtFinished();
+        }
+    }
 
     // Setup Dice
     public bool SetDice(Dice dice)
@@ -153,11 +194,11 @@ class GameControl
     }
 
     // Setup Board
-    public bool SetBoard(Board board)
+    public bool SetBoard(int size)
     {
-        if (board != null)
+        if (size > 0)
         {
-            _board = board;
+            _board = new Board(size);
             return true;
         }
         return false;
@@ -166,23 +207,35 @@ class GameControl
     {
         return _board;
     }
-    public bool SetSnake(int head, int tail)
+    public bool SetSnake(Dictionary<int, int> snakes)
     {
-        if (head > tail && head <= _board.GetSize() && tail > 0)
+        foreach (var snake in snakes)
         {
-            _board.AddSnake(head, tail);
-            return true;
+            if (snake.Key > snake.Value && snake.Key < _board.GetSize() && snake.Value > 0)
+            {
+                _board.AddSnake(snake.Key, snake.Value);
+            }
+            else
+            {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
-    public bool SetLadder(int bottom, int top)
+    public bool SetLadder(Dictionary<int, int> ladders)
     {
-        if (top > bottom && top <= _board.GetSize() && bottom > 0)
+        foreach (var ladder in ladders)
         {
-            _board.AddLadder(bottom, top);
-            return true;
+            if (ladder.Key > ladder.Value && ladder.Key < _board.GetSize() && ladder.Value > 0)
+            {
+                _board.AddSnake(ladder.Key, ladder.Value);
+            }
+            else
+            {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
     public int GetSnakeHead(int tailPosition)
     {
@@ -228,11 +281,11 @@ class GameControl
         }
         return 0;
     }
-    public int HandleSnakeEncounter(int currentPosition)
+    public int HandleSnakeEncounter(IPlayer player, int currentPosition)
     {
         return GetSnakeTail(currentPosition);
     }
-    public int HandleLadderEncounter(int currentPosition)
+    public int HandleLadderEncounter(IPlayer player, int currentPosition)
     {
         return GetLadderTop(currentPosition);
     }
@@ -247,5 +300,25 @@ class GameControl
         }
         return false;
     }
-
+    public CellType GetCellType(int position)
+    {
+        if (_board.GetSnake().ContainsKey(position))
+        {
+            int tailPosition = _board.GetSnake()[position];
+            return GetSnakeHead(tailPosition) != 0 ? CellType.SnakeHead : CellType.SnakeTail;
+        }
+        else if (_board.GetLadder().ContainsKey(position))
+        {
+            int topPosition = _board.GetLadder()[position];
+            return GetLadderBottom(topPosition) != 0 ? CellType.LadderBottom : CellType.LadderTop;
+        }
+        else if (_playerPosition.ContainsValue(position))
+        {
+            return CellType.Player;
+        }
+        else
+        {
+            return CellType.Normal;
+        }
+    }
 }
