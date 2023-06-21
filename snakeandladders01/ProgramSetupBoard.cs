@@ -33,17 +33,17 @@ partial class BoardSetup
     {
         gameControl.SetLadder(ladders);
         gameControl.SetSnake(snakes);
+        //gameControl(ladders,snake);
         Console.Clear();
         Console.WriteLine("==============[Setup Board]==============");
         int boardSize = 0;
-        bool isValidInput = false;
-        while (!isValidInput)
+        while (gameControl.SetBoard(boardSize) == false)
         {
             Console.Write("Input the Number of cell on a Board: ");
             string input = Console.ReadLine();
-            if (int.TryParse(input, out boardSize) && boardSize >= 20)
+            if (int.TryParse(input, out boardSize) && gameControl.SetBoard(boardSize) == true)
             {
-                isValidInput = true;
+                gameControl.SetBoard(boardSize);
                 Console.WriteLine("Setup Board Succesfully");
             }
             else

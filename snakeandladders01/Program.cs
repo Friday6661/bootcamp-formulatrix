@@ -24,13 +24,13 @@ namespace SnakesAndLadders
             Console.WriteLine("===========[Main Program]===========");
             Console.WriteLine("Number of players: " + playerCount);
             Console.WriteLine("Player names:");
-            foreach (var player in gameControl.GetPlayers())
-            {
-                Console.WriteLine(gameControl.GetPlayerName(player));
-            }
-            Console.WriteLine("Sum of Cell on Board: " + boardSetup);
+            // foreach (var player in gameControl.GetPlayer(gameControl.))
+            // {
+            //     Console.WriteLine(gameControl.GetPlayerName(player));
+            // }
+            // Console.WriteLine("Sum of Cell on Board: " + boardSetup);
 
-            Console.ReadLine();
+            // Console.ReadLine();
         }
     }
 }

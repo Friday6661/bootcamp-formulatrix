@@ -26,11 +26,28 @@ class GameControl
         _playerPosition = new Dictionary<IPlayer, int>();
         _lastRollValue = new Dictionary<IPlayer, int>();
     }
-    
     // Setup Players
-    public void AddPlayer(string name)
+    public IPlayer GetPlayer(string name)
     {
+        return _players.FirstOrDefault(player => player.GetName() == name);
+    }
+
+    public bool SetInputNumberOfPlayers(int numberOfPlayers)
+    {
+        if (numberOfPlayers >= 2 && numberOfPlayers <= 4)
+        {
+            return true;
+        }
+        return false;
+    }
+    public bool AddPlayer(string name)
+    {
+        if (string.IsNullOrEmpty(name) || _players.Any(player => player.GetName() == name))
+        {
+            return false;
+        }
         _players.Add(new Player(name));
+        return true;
     }
     public bool SetPlayers(IList<IPlayer> players)
     {
@@ -196,7 +213,7 @@ class GameControl
     // Setup Board
     public bool SetBoard(int size)
     {
-        if (size > 0)
+        if (size > 20)
         {
             _board = new Board(size);
             return true;

@@ -19,27 +19,28 @@ partial class PlayerSetup
     {
         Console.Clear();
         Console.WriteLine("==============[Setup Player]==============");
-        int playerCount = 0;
-        bool isValidInput = false;
-        while (!isValidInput)
+        int numberOfPlayer = gameControl.GetPlayersCount();
+        //bool isValidInput = false;
+        while (!gameControl.SetInputNumberOfPlayers(numberOfPlayer))
         {
             Console.Write("Enter the number of players (2-4): ");
             string input = Console.ReadLine();
-            if (int.TryParse(input, out playerCount) && playerCount >= 2 && playerCount <= 4)
+            if (int.TryParse(input, out numberOfPlayer) && gameControl.SetInputNumberOfPlayers(numberOfPlayer) == true)
             {
-                isValidInput = true;
+                Console.Clear();
+                Console.WriteLine("Input number of players is successfully");
             }
             else
             {
                 Console.WriteLine("Invalid input. Please enter a valid number of players.");
             }
         }
-        return playerCount;
+        return numberOfPlayer;
     }
 
-    public static void GetPlayerNames(int playerCount)
+    public static void GetPlayerNames(int numberOfPlayer)
     {
-        for (int i = 1; i <= playerCount; i++)
+        for (int i = 1; i <= numberOfPlayer; i++)
         {
             while (true)
             {
@@ -47,9 +48,8 @@ partial class PlayerSetup
                 string name = Console.ReadLine();
                 if (name.Length >= 2)
                 {
-                    IPlayer player = new Player(name);
-                    gameControl.SetPlayerName(player, name);
-                    gameControl.AddPlayer(player.GetName());
+                    gameControl.AddPlayer(name);
+                    //gameControl.SetPlayerName(gameControl.name);
                     break;
                 }
                 else
