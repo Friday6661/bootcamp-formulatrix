@@ -22,13 +22,8 @@ public class Player : IPlayer
     {
         return _name;
     }
-    public bool SetName(string name)
+    public void SetName(string name)
     {
-        if(!string.IsNullOrEmpty(name))
-        {
             _name = name;
-            return true;
-        }
-        return false;
     }
 }

@@ -16,51 +16,49 @@ namespace SnakesAndLadders
 {
     partial class Program
     {
-        static GameControl gameControl = new GameControl();
+        
         static void Main(string[] args)
         {
-            int playerCount = PlayerSetup.GetInputNumberPlayers();
-            List<string> playerNames = PlayerSetup.GetInputPlayerName(playerCount);
+            GameControl gameControl = new GameControl();
+            int playerCount = PlayerSetup.GetInputNumberPlayers(gameControl);
+            PlayerSetup.GetInputPlayerName(gameControl,playerCount);
             int boardSetup = BoardSetup.GetBoardFromUser();
             int diceSetup = DiceSetup.GetDiceFromUserInput();
             Console.WriteLine("===========[Main Program]===========");
             Console.WriteLine("Number of players: " + playerCount);
-            foreach (string playerName in playerNames)
-            {
-                Console.WriteLine("Player Name: " + playerName);
-            }
+            Console.WriteLine($"Players ID: {gameControl.GetAllPlayerIDs()} Name of Players: {gameControl.GetAllPlayerNames()}");
             Console.WriteLine("Sum of Cell on Board: " + boardSetup);
             Console.WriteLine("Number of sides: " + diceSetup);
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("================================[ Start Game ]================================");
-            while (!gameControl.SetGameFinished())
-            {
-                foreach(Player player in gameControl.GetPlayers())
-                {
-                    Console.WriteLine(gameControl.GetPlayerName(player), gameControl.GetPlayerPosition(player));
-                    Console.ReadLine();
-                    bool rollAgain = true;
-                    int totalRolls = 0;
-                    while (rollAgain && totalRolls < 2)
-                    {
-                        gameControl.RollDice(player);
-                        gameControl.MovePlayer(player);
-                        totalRolls++;
-                        if (gameControl.SetRollAgain(player, rollAgain) == true)
-                        {
-                            Console.WriteLine($"Player {player.GetName()} rolled a dice and got a {gameControl.GetNumberOfSides()}! Roll the dice again");
-                            Console.ReadLine();
-                        }
-                        else
-                        {
-                            rollAgain = false;
-                            gameControl.SetRollAgain(player, rollAgain);
-                        }
-                    }
-                }
-            }
-            Console.ReadLine();
+            // while (!gameControl.SetGameFinished())
+            // {
+            //     foreach(Player player in gameControl.GetPlayers())
+            //     {
+            //         Console.WriteLine(gameControl.GetPlayerName(player), gameControl.GetPlayerPosition(player));
+            //         Console.ReadLine();
+            //         bool rollAgain = true;
+            //         int totalRolls = 0;
+            //         while (rollAgain && totalRolls < 2)
+            //         {
+            //             gameControl.RollDice(player);
+            //             gameControl.MovePlayer(player);
+            //             totalRolls++;
+            //             if (gameControl.SetRollAgain(player, rollAgain) == true)
+            //             {
+            //                 Console.WriteLine($"Player {player.GetName()} rolled a dice and got a {gameControl.GetNumberOfSides()}! Roll the dice again");
+            //                 Console.ReadLine();
+            //             }
+            //             else
+            //             {
+            //                 rollAgain = false;
+            //                 gameControl.SetRollAgain(player, rollAgain);
+            //             }
+            //         }
+            //     }
+            // }
+            // Console.ReadLine();
         }
     }
 }

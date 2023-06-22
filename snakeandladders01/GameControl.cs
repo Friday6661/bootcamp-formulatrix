@@ -10,9 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace GameControlLib;
 
-class GameControl
+public class GameControl
 {
-    private List<Player> _players;
+    public List<Player> _players;
     private Dice _dice;
     private Board _board;
     private CellType _cellType;
@@ -31,14 +31,9 @@ class GameControl
     {
         return _players.FirstOrDefault(player => player.GetName() == name);
     }
-    public bool AddPlayer(string name)
+    public void AddPlayer(string name)
     {
-        if (string.IsNullOrEmpty(name)|| name.Length <= 2 || _players.Any(p => p.GetName() == name.ToUpper()))
-        {
-            return false;
-        }
         _players.Add(new Player(name));
-        return true;
     }
     public bool SetNumberOfPlayers(int numberOfPlayers)
     {
