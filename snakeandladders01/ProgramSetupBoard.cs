@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace ProgramSetupPlayerLib;
+namespace ProgramSetupBoardLib;
 
 partial class BoardSetup
 {
@@ -48,7 +48,7 @@ partial class BoardSetup
             }
             else
             {
-                Console.WriteLine("Invalid input. Pleas enter a valid number cell on a Board");
+                Console.WriteLine("Invalid input. Please enter a valid number cell on a Board!");
             }
         }
         return boardSize;

@@ -11,53 +11,100 @@ using System.Collections.Generic;
 
 namespace ProgramSetupPlayerLib;
 
+// partial class PlayerSetup
+// {
+//     static GameControl gameControl = new GameControl();
+
+//     public static int GetPlayersFromUser()
+//     {
+//         Console.Clear();
+//         Console.WriteLine("==============[Setup Player]==============");
+//         int numberOfPlayers;
+//         while (true)
+//         {
+//             Console.WriteLine("Enter the number of players (2-4): ");
+//             string input = Console.ReadLine();
+//             if (int.TryParse(input, out numberOfPlayers) && gameControl.SetInputNumberOfPlayers(numberOfPlayers) == true)
+//             {
+//                 Console.WriteLine("Input number of players is succesfully");
+//                 break;
+//             }
+//             else
+//             {
+//                 Console.WriteLine("Invalid input, Please enter a valid number of players");
+//             }
+//         }
+//         for (int i = 1; i <= numberOfPlayers; i++)
+//         {
+//             while (gameControl.GetPlayersCount() < numberOfPlayers)
+//             {
+//                 Console.Write($"Enter the Name of Players {i}: ");
+//                 string name = Console.ReadLine().ToUpper();
+//                 if (name.Length > 2)
+//                 {
+//                     gameControl.AddPlayer(name.ToUpper());
+//                     Console.Write($"Input Player {i} is Success ");
+//                     Console.WriteLine($"Player Name: {name}");
+//                 }
+//                 else
+//                 {
+//                     Console.WriteLine("Invalid Input! Try again");
+//                 }
+//             }
+//             foreach (var player in gameControl.GetPlayers())
+//             {
+//                 Console.WriteLine($"Player Name: {gameControl.GetPlayerName(player)}");
+//                 Console.WriteLine($"Player ID: {gameControl.GetPlayerID(player)}");
+//             }
+//             break;
+//         }
+//         return numberOfPlayers;
+//     }
+// }
 partial class PlayerSetup
 {
     static GameControl gameControl = new GameControl();
-
-    public static int GetPlayersFromUser()
+    public static int GetInputNumberPlayers()
     {
         Console.Clear();
         Console.WriteLine("==============[Setup Player]==============");
-        int numberOfPlayer = gameControl.GetPlayersCount();
-        //bool isValidInput = false;
-        while (!gameControl.SetInputNumberOfPlayers(numberOfPlayer))
+        int numberOfPlayers = 0;
+        while (gameControl.SetNumberOfPlayers(numberOfPlayers) == false)
         {
             Console.Write("Enter the number of players (2-4): ");
             string input = Console.ReadLine();
-            if (int.TryParse(input, out numberOfPlayer) && gameControl.SetInputNumberOfPlayers(numberOfPlayer) == true)
+            if (int.TryParse(input, out numberOfPlayers) && gameControl.SetNumberOfPlayers(numberOfPlayers))
             {
-                Console.Clear();
-                Console.WriteLine("Input number of players is successfully");
+                Console.WriteLine("Input number of player success");
+                Console.WriteLine($"Number of players {numberOfPlayers}");
+                Console.ReadLine();
+                break;
             }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number of players.");
-            }
+            Console.WriteLine("Invalid input number. Try again!");
         }
-        return numberOfPlayer;
+        return numberOfPlayers;
     }
-
-    public static void GetPlayerNames(int numberOfPlayer)
+    public static List<string> GetInputPlayerName(int numberOfPlayers)
     {
-        for (int i = 1; i <= numberOfPlayer; i++)
+        Console.Clear();
+        Console.WriteLine("==============[Setup Player]==============");
+        for (int i = 1; i <= numberOfPlayers; i++)
         {
-            while (true)
+            while (gameControl.GetPlayersCount() <= numberOfPlayers)
             {
-                Console.Write($"Enter the Name of Player {i}: (at least 2 characters): ");
+                Console.Write($"Enter the Name of Player {i}: ");
                 string name = Console.ReadLine();
-                if (name.Length >= 2)
+                if (gameControl.SetPlayerName(name.ToUpper()))
                 {
-                    gameControl.AddPlayer(name);
-                    //gameControl.SetPlayerName(gameControl.name);
-                    break;
+                    gameControl.AddPlayer(name.ToUpper());
+                    Console.WriteLine($"Input player {i} Success");
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input for player name. Try Again!");
+                    Console.WriteLine("Invalid input name. Try Again!");
                 }
             }
         }
+        return gameControl.GetAllPlayerNames();
     }
 }
-

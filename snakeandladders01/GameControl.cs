@@ -12,53 +12,44 @@ namespace GameControlLib;
 
 class GameControl
 {
-    private IList<IPlayer> _players;
+    private List<Player> _players;
     private Dice _dice;
     private Board _board;
     private CellType _cellType;
-    private Dictionary<IPlayer, int> _playerPosition;
-    private Dictionary<IPlayer, int> _lastRollValue;
+    private Dictionary<Player, int> _playerPosition;
+    private Dictionary<Player, int> _lastRollValue;
     public GameControl()
     {
-        _players = new List<IPlayer>();
+        _players = new List<Player>();
         _dice = new Dice(0);
         _board = new Board(0);
-        _playerPosition = new Dictionary<IPlayer, int>();
-        _lastRollValue = new Dictionary<IPlayer, int>();
+        _playerPosition = new Dictionary<Player, int>();
+        _lastRollValue = new Dictionary<Player, int>();
     }
     // Setup Players
-    public IPlayer GetPlayer(string name)
+    public Player GetPlayer(string name)
     {
         return _players.FirstOrDefault(player => player.GetName() == name);
     }
-
-    public bool SetInputNumberOfPlayers(int numberOfPlayers)
-    {
-        if (numberOfPlayers >= 2 && numberOfPlayers <= 4)
-        {
-            return true;
-        }
-        return false;
-    }
     public bool AddPlayer(string name)
     {
-        if (string.IsNullOrEmpty(name) || _players.Any(player => player.GetName() == name))
+        if (string.IsNullOrEmpty(name)|| name.Length <= 2 || _players.Any(p => p.GetName() == name.ToUpper()))
         {
             return false;
         }
         _players.Add(new Player(name));
         return true;
     }
-    public bool SetPlayers(IList<IPlayer> players)
+    public bool SetNumberOfPlayers(int numberOfPlayers)
     {
-        if (players.Count >= 2 && players.Count <= 4)
+        if (numberOfPlayers >= 2 && numberOfPlayers <= 4)
         {
-            _players = players;
+            _players.Clear();
             return true;
         }
         return false;
     }
-    public IList<IPlayer> GetPlayers()
+    public List<Player> GetPlayers()
     {
         return _players;
     }
@@ -66,24 +57,21 @@ class GameControl
     {
         return _players.Count();
     }
-    public bool SetPlayerName(IPlayer player, string name)
+    public bool SetPlayerName(string name)
     {
-        if (GetPlayersCount() != null && name.Length > 2)
+        Player player = _players.FirstOrDefault(p => p.GetName() == name);
+        if (name.Length > 2 && !_players.Any(p => p != player && p.GetName() == name))
         {
             player.SetName(name);
             return true;
         }
         return false;
     }
-    public string GetPlayerName(IPlayer player)
+    public string GetPlayerName(Player player)
     {
-        if (player != null)
-        {
             return player.GetName();
-        }
-        return string.Empty;
     }
-    public string GetPlayerID(IPlayer player)
+    public string GetPlayerID(Player player)
     {
         if (player != null)
         {
@@ -91,9 +79,9 @@ class GameControl
         }
         return string.Empty;
     }
-    public IPlayer GetPlayerAtPosition(int position)
+    public Player GetPlayerAtPosition(int position)
     {
-        foreach (KeyValuePair<IPlayer, int> entry in _playerPosition)
+        foreach (KeyValuePair<Player, int> entry in _playerPosition)
         {
             if (entry.Value == position)
             {
@@ -102,10 +90,10 @@ class GameControl
         }
         return null;
     } 
-    public IList<IPlayer> GetPlayersInPosition(int position)
+    public List<Player> GetPlayersInPosition(int position)
     {
-        IList<IPlayer> playersInPosition = new List<IPlayer>();
-        foreach (KeyValuePair<IPlayer, int> entry in _playerPosition)
+        List<Player> playersInPosition = new List<Player>();
+        foreach (KeyValuePair<Player, int> entry in _playerPosition)
         {
             if (entry.Value == position)
             {
@@ -114,7 +102,7 @@ class GameControl
         }
         return playersInPosition;
     }
-    public int GetPlayerPosition(IPlayer player)
+    public int GetPlayerPosition(Player player)
     {
         if (_playerPosition.ContainsKey(player))
         {
@@ -122,7 +110,7 @@ class GameControl
         }
         return 0;
     }
-    public bool SetPlayerPosition(IPlayer player, int position)
+    public bool SetPlayerPosition(Player player, int position)
     {
         if (_playerPosition.ContainsKey(player))
         {
@@ -130,17 +118,17 @@ class GameControl
         }
         return true;
     }
-    public IList<string> GetAllPlayerNames()
+    public List<string> GetAllPlayerNames()
     {
         return _players.Select(player => player.GetName()).ToList();
     }
-    public IList<string> GetAllPlayerIDs()
+    public List<string> GetAllPlayerIDs()
     {
         return _players.Select(player => player.GetId()).ToList();
     }
-    public IList<IPlayer> GetPlayersAtFinished()
+    public List<Player> GetPlayersAtFinished()
     {
-        IList<IPlayer> playersAtFinished = new List<IPlayer>();
+        List<Player> playersAtFinished = new List<Player>();
         foreach (var player in _players)
         {
             if (GetPlayerPosition(player) == _board.GetSize())
@@ -150,18 +138,21 @@ class GameControl
         }
         return playersAtFinished;
     }
-    public void MovePlayer(IPlayer player)
+    public void MovePlayer(Player player)
     {
         int currentPosition = GetPlayerPosition(player);
         int newPosition = currentPosition + _lastRollValue[player];
         if (newPosition < _board.GetSize())
         {
+            Console.WriteLine($"Player {player.GetName} moves to position {newPosition}");
             switch (GetCellType(newPosition))
             {
                 case CellType.SnakeHead:
+                    Console.WriteLine($"Player {player.GetName()} encountered a snake! moves to position {newPosition}");
                     newPosition = HandleSnakeEncounter(player, newPosition);
                     break;
                 case CellType.LadderBottom:
+                    Console.WriteLine($"Player {player.GetName()} encountered a ladder! moves to position {newPosition}");
                     newPosition = HandleLadderEncounter(player, newPosition);
                     break;
                 default:
@@ -170,20 +161,21 @@ class GameControl
         }
         else if (newPosition > _board.GetSize())
         {
+            Console.WriteLine($"Player {player.GetName()} exceeded the target position.Moving back to position {newPosition}");
             newPosition = _board.GetSize() - (newPosition - _board.GetSize());
         }
         else if (newPosition == _board.GetSize())
         {
-            IList<IPlayer> playersAtFinished = GetPlayersAtFinished();
+            IList<Player> playersAtFinished = GetPlayersAtFinished();
         }
     }
 
     // Setup Dice
-    public bool SetDice(Dice dice)
+    public bool SetDice(int numberOfSides)
     {
-        if (dice != null)
+        if (numberOfSides > 0)
         {
-            _dice = dice;
+            _dice = new Dice(numberOfSides);
             return true;
         }
         return false;
@@ -195,12 +187,12 @@ class GameControl
     {
         return _dice.GetNumberOfSides();
     }
-    public void RollDice(IPlayer player)
+    public void RollDice(Player player)
     {
         int roll = _dice.GetRoll();
         _lastRollValue[player] = roll;
     }
-    public bool SetRollAgain(IPlayer player, bool rollAgain)
+    public bool SetRollAgain(Player player, bool rollAgain)
     {
         if (_lastRollValue.ContainsKey(player))
         {
@@ -213,7 +205,7 @@ class GameControl
     // Setup Board
     public bool SetBoard(int size)
     {
-        if (size > 20)
+        if (size > 20 && size % 10 == 0)
         {
             _board = new Board(size);
             return true;
@@ -298,17 +290,17 @@ class GameControl
         }
         return 0;
     }
-    public int HandleSnakeEncounter(IPlayer player, int currentPosition)
+    public int HandleSnakeEncounter(Player player, int currentPosition)
     {
         return GetSnakeTail(currentPosition);
     }
-    public int HandleLadderEncounter(IPlayer player, int currentPosition)
+    public int HandleLadderEncounter(Player player, int currentPosition)
     {
         return GetLadderTop(currentPosition);
     }
     public bool SetGameFinished()
     {
-        foreach (IPlayer player in _players)
+        foreach (Player player in _players)
         {
             if (GetPlayerPosition(player) == _board.GetSize())
             {
@@ -338,4 +330,5 @@ class GameControl
             return CellType.Normal;
         }
     }
+    
 }
