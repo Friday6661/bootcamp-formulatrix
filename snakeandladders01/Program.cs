@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using ProgramSetupPlayerLib;
 using ProgramSetupBoardLib;
 using ProgramSetupDiceLib;
+using ProgramMovePlayerLib;
 
 namespace SnakesAndLadders
 {
@@ -19,46 +20,49 @@ namespace SnakesAndLadders
         
         static void Main(string[] args)
         {
+            Console.Clear();
             GameControl gameControl = new GameControl();
             int playerCount = PlayerSetup.GetInputNumberPlayers(gameControl);
             PlayerSetup.GetInputPlayerName(gameControl,playerCount);
-            int boardSetup = BoardSetup.GetBoardFromUser();
-            int diceSetup = DiceSetup.GetDiceFromUserInput();
+            int boardSetup = BoardSetup.GetBoardFromUser(gameControl);
+            int diceSetup = DiceSetup.GetDiceFromUserInput(gameControl);
+            Console.Clear();
             Console.WriteLine("===========[Main Program]===========");
             Console.WriteLine("Number of players: " + playerCount);
-            Console.WriteLine($"Players ID: {gameControl.GetAllPlayerIDs()} Name of Players: {gameControl.GetAllPlayerNames()}");
+            PlayerSetup.GetPlayerInfo(gameControl);
             Console.WriteLine("Sum of Cell on Board: " + boardSetup);
             Console.WriteLine("Number of sides: " + diceSetup);
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("================================[ Start Game ]================================");
-            // while (!gameControl.SetGameFinished())
-            // {
-            //     foreach(Player player in gameControl.GetPlayers())
-            //     {
-            //         Console.WriteLine(gameControl.GetPlayerName(player), gameControl.GetPlayerPosition(player));
-            //         Console.ReadLine();
-            //         bool rollAgain = true;
-            //         int totalRolls = 0;
-            //         while (rollAgain && totalRolls < 2)
-            //         {
-            //             gameControl.RollDice(player);
-            //             gameControl.MovePlayer(player);
-            //             totalRolls++;
-            //             if (gameControl.SetRollAgain(player, rollAgain) == true)
-            //             {
-            //                 Console.WriteLine($"Player {player.GetName()} rolled a dice and got a {gameControl.GetNumberOfSides()}! Roll the dice again");
-            //                 Console.ReadLine();
-            //             }
-            //             else
-            //             {
-            //                 rollAgain = false;
-            //                 gameControl.SetRollAgain(player, rollAgain);
-            //             }
-            //         }
-            //     }
-            // }
-            // Console.ReadLine();
+            while (!gameControl.SetGameFinished())
+            {
+                foreach (Player player in gameControl.GetPlayers())
+                {
+                    bool roolAgain = true;
+                    int totalRolls = 0;
+                    while (roolAgain && totalRolls <2)
+                    {
+                        gameControl.RollDice(player);
+                        Console.ReadLine();
+                        Console.WriteLine($"Player {gameControl.GetPlayerName(player)} rolled the dice and got a {gameControl.GetLastRollValue(player)} ");
+                        MovePlayerSet.MovePlayer(gameControl, player);
+                        // Console.WriteLine($"Player {gameControl.GetPlayerName(player)} Positioned {gameControl.GetPlayerPosition(player)}");
+                        // Display Board
+                        if (gameControl.GetRollAgain(player))
+                        {
+                            Console.WriteLine("Player get roll again!");
+                            Console.ReadLine();
+                            break;
+                        }
+                        else
+                        {
+                            roolAgain = false;
+                        }
+                    }
+                }
+            }
+            Console.ReadLine();
         }
     }
 }
