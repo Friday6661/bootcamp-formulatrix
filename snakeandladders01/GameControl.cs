@@ -116,13 +116,16 @@ public class GameControl
         }
         return 0;
     }
-    public bool SetPlayerPosition(Player player, int position)
+    public void SetPlayerPosition(Player player, int position)
     {
         if (_playerPosition.ContainsKey(player))
         {
             _playerPosition[player] = position;
         }
-        return true;
+        else
+        {
+            _playerPosition.Add(player, position);
+        }
     }
     public List<Player> GetPlayersAtFinished()
     {

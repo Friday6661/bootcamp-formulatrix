@@ -1,36 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
-      "shortid/4.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard1.0/shortid.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/shortid.dll": {}
-        }
-      }
-    }
+    "net7.0": {}
   },
-  "libraries": {
-    "shortid/4.0.0": {
-      "sha512": "iiOsFHiZLfmUxViNKWAmLYi6xCJanKBYlxe163pkK4C+k9vnkWdCNCPouNWukn/F147k3bLq0tEFEQhlGMLqjA==",
-      "type": "package",
-      "path": "shortid/4.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard1.0/shortid.dll",
-        "shortid.4.0.0.nupkg.sha512",
-        "shortid.nuspec"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net7.0": [
-      "Shortid >= 4.0.0"
-    ]
+    "net7.0": []
   },
   "packageFolders": {
     "C:\\Users\\Formulatrix\\.nuget\\packages\\": {}
@@ -38,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\snakeandladders01.csproj",
-      "projectName": "snakeandladders01",
-      "projectPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\snakeandladders01.csproj",
+      "projectUniqueName": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj",
+      "projectName": "bootcamp-formulatrix",
+      "projectPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj",
       "packagesPath": "C:\\Users\\Formulatrix\\.nuget\\packages\\",
-      "outputPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\obj\\",
+      "outputPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Formulatrix\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -68,12 +43,6 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
-        "dependencies": {
-          "Shortid": {
-            "target": "Package",
-            "version": "[4.0.0, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

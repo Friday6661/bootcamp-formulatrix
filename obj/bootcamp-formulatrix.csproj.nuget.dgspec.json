@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\snakeandladders01.csproj": {}
+    "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj": {}
   },
   "projects": {
-    "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\snakeandladders01.csproj": {
+    "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\snakeandladders01.csproj",
-        "projectName": "snakeandladders01",
-        "projectPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\snakeandladders01.csproj",
+        "projectUniqueName": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj",
+        "projectName": "bootcamp-formulatrix",
+        "projectPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj",
         "packagesPath": "C:\\Users\\Formulatrix\\.nuget\\packages\\",
-        "outputPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\obj\\",
+        "outputPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Formulatrix\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,12 +37,6 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "dependencies": {
-            "Shortid": {
-              "target": "Package",
-              "version": "[4.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

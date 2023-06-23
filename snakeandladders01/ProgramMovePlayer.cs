@@ -18,6 +18,8 @@ partial class MovePlayerSet
     {
         int currentPosition = gameControl.GetPlayerPosition(player);
         int newPosition = currentPosition + gameControl.GetLastRollValue(player);
+        Console.WriteLine("newPosition: " + newPosition);
+
         if (newPosition < gameControl.GetBoardSize())
         {
             Console.WriteLine($"Player {gameControl.GetPlayerName(player)} moves to position {newPosition}");
