@@ -13,7 +13,6 @@ namespace ProgramSetupBoardLib;
 
 partial class BoardSetup
 {
-    static GameControl gameControl = new GameControl();
     static Dictionary<int, int> snakes = new Dictionary<int, int>()
     {
         {16, 6},
@@ -29,7 +28,7 @@ partial class BoardSetup
         {13, 48},
     };
 
-    public static int GetBoardFromUser()
+    public static int GetBoardFromUser(GameControl gameControl)
     {
         gameControl.SetLadder(ladders);
         gameControl.SetSnake(snakes);

@@ -18,6 +18,7 @@ public class GameControl
     private CellType _cellType;
     private Dictionary<Player, int> _playerPosition;
     private Dictionary<Player, int> _lastRollValue;
+    private Dictionary<Player, int> _playerFinished;
     public GameControl()
     {
         _players = new List<Player>();
@@ -25,6 +26,8 @@ public class GameControl
         _board = new Board(0);
         _playerPosition = new Dictionary<Player, int>();
         _lastRollValue = new Dictionary<Player, int>();
+        _playerFinished = new Dictionary<Player, int>();
+        _cellType = new CellType();
     }
     // Setup Players
     public Player GetPlayer(string name)
@@ -62,9 +65,17 @@ public class GameControl
         }
         return false;
     }
+    public List<string> GetAllPlayerNames()
+    {
+        return _players.Select(player => player.GetName()).ToList();
+    }
     public string GetPlayerName(Player player)
     {
             return player.GetName();
+    }
+    public List<string> GetAllPlayerIDs()
+    {
+        return _players.Select(player => player.GetId()).ToList();
     }
     public string GetPlayerID(Player player)
     {
@@ -112,14 +123,6 @@ public class GameControl
             _playerPosition[player] = position;
         }
         return true;
-    }
-    public List<string> GetAllPlayerNames()
-    {
-        return _players.Select(player => player.GetName()).ToList();
-    }
-    public List<string> GetAllPlayerIDs()
-    {
-        return _players.Select(player => player.GetId()).ToList();
     }
     public List<Player> GetPlayersAtFinished()
     {
@@ -184,9 +187,21 @@ public class GameControl
     }
     public void RollDice(Player player)
     {
-        int roll = _dice.GetRoll();
-        _lastRollValue[player] = roll;
+        int rollValue = _dice.GetRoll();
+        _lastRollValue[player] = rollValue;
     }
+    public int GetLastRollValue(Player player)
+    {
+        if (_lastRollValue.ContainsKey(player))
+        {
+            return _lastRollValue[player];
+        }
+        return 0;
+    }
+    // public void SetLastRollValue(Player player, int rollValue)
+    // {
+    //     _lastRollValue[player] = rollValue;
+    // }
     public bool SetRollAgain(Player player, bool rollAgain)
     {
         if (_lastRollValue.ContainsKey(player))
@@ -195,6 +210,24 @@ public class GameControl
             return true;
         }
         return false;
+    }
+    public bool GetRollAgain(Player player)
+    {
+        if (_lastRollValue.ContainsKey(player))
+        {
+            int lastRollValue = _lastRollValue[player];
+            return lastRollValue == _dice.GetNumberOfSides();
+        }
+        return false;
+    }
+    public int GetTotalRolls(Player player)
+    {
+        if (_lastRollValue.ContainsKey(player))
+        {
+            int totalRolls = _lastRollValue.Count(kv => kv.Key == player);
+            return totalRolls;
+        }
+        return 0;
     }
 
     // Setup Board
@@ -210,6 +243,10 @@ public class GameControl
     public Board GetBoard()
     {
         return _board;
+    }
+    public int GetBoardSize()
+    {
+        return _board.GetSize();
     }
     public bool SetSnake(Dictionary<int, int> snakes)
     {

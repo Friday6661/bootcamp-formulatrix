@@ -13,8 +13,7 @@ namespace ProgramSetupDiceLib;
 
 partial class DiceSetup
 {
-    static GameControl gameControl = new GameControl();
-    public static int GetDiceFromUserInput()
+    public static int GetDiceFromUserInput(GameControl gameControl)
     {
         Console.Clear();
         Console.WriteLine("==============[Setup Board]==============");
@@ -35,4 +34,19 @@ partial class DiceSetup
         }
         return numberOfSides;
     }
+    public static bool GetPlayerRollAgain(GameControl gameControl, Player player, bool rollAgain)
+        {
+            if (gameControl.SetRollAgain(player, rollAgain) == true)
+            {
+                Console.WriteLine($"Player {player.GetName()} rolled a dice and got a {gameControl.GetNumberOfSides()}! Roll the dice again");
+                Console.ReadLine();
+            }
+            else
+            {
+                rollAgain = false;
+                gameControl.SetRollAgain(player, rollAgain);
+            }
+
+            return rollAgain;
+        }
 }
