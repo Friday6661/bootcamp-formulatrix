@@ -7,5 +7,5 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = snakeandladders01test
-build_property.ProjectDir = d:\Jamal-bootcampformulatrix\bootcamp-formulatrix\snakeandladders01test\
+build_property.RootNamespace = gameSederhanatest
+build_property.ProjectDir = d:\Jamal-bootcampformulatrix\bootcamp-formulatrix\gameSederhanatest\
