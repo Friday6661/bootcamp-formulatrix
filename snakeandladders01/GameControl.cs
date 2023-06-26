@@ -164,31 +164,31 @@ public class GameControl
             if (GetBoard().GetSnake().ContainsKey(newPosition) && !GetRollAgain(player))
             {
                 newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
-                Message.SnakeEncounter.ToString();
+                // Message.SnakeEncounter.ToString();
             }
             else if (GetBoard().GetLadder().ContainsKey(newPosition) && !GetRollAgain(player))
             {
                 newPosition = onLadderEncounter?.Invoke(player, newPosition) ?? GetLadderTop(newPosition);
-                Message.LadderEncounter.ToString();
+                // Message.LadderEncounter.ToString();
             }
-            Message.NewPosition.ToString();
+            // Message.NewPosition.ToString();
             // Console.WriteLine($"Player {GetPlayerName(player)} moves to position {newPosition}");
         }
         else if (newPosition > GetBoardSize())
         {
             newPosition = GetBoardSize() - (newPosition - GetBoardSize());
-            Message.ExceededMove.ToString();
+            // Message.ExceededMove.ToString();
             if (GetBoard().GetSnake().ContainsKey(newPosition))
             {
                 newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
-                Message.SnakeEncounter.ToString();
+                // Message.SnakeEncounter.ToString();
             }
             else if (GetBoard().GetLadder().ContainsKey(newPosition))
             {
                 newPosition = onLadderEncounter?.Invoke(player, newPosition) ?? GetLadderTop(newPosition);
-                Message.LadderEncounter.ToString();
+                // Message.LadderEncounter.ToString();
             }
-            Message.NewPosition.ToString();
+            // Message.NewPosition.ToString();
             // Console.WriteLine($"Player {GetPlayerName(player)} moves to position {newPosition}");
             // Console.WriteLine($"Player {GetPlayerName(player)} exceeded the target position. Moving back to position {newPosition}");
         }
@@ -196,7 +196,7 @@ public class GameControl
         {
             foreach (var p in GetPlayersAtFinished())
             {
-                Message.Finished.ToString();
+                // Message.Finished.ToString();
                 // Console.WriteLine($"Player Name {GetPlayerName(p)} Player ID {GetPlayerID(p)}"); 
             }
         }
