@@ -4,14 +4,15 @@ namespace BoardLib;
 public class Board : IBoard
 {
     private int _size;
-    private IDictionary<int, int> _snake;
-    private IDictionary<int, int> _ladder;
+    private Dictionary<int, int> _snake;
+    private Dictionary<int, int> _ladder;
 
-    public Board(int size)
+    public Board(){}
+    public Board(int size, Dictionary<int, int> snake, Dictionary<int, int> ladder)
     {
         _size = size;
-        _snake = new Dictionary<int, int>();
-        _ladder = new Dictionary<int, int>();
+        _snake = snake;
+        _ladder = ladder;
     }
 
     public int GetSize()
@@ -27,6 +28,10 @@ public class Board : IBoard
         }
         return false;
     }
+    // public void SetSnake(int snakeHead, int snakeTail)
+    // {
+    //     _snake.Add(new(snakeHead, snakeTail));
+    // }
     public void AddSnake(int head, int tail)
     {
         _snake[head] = tail;
@@ -35,7 +40,7 @@ public class Board : IBoard
     {
         _snake[head] = tail;
     }
-    public IDictionary<int, int> GetSnake()
+    public Dictionary<int, int> GetSnake()
     {
         return _snake;
     }
@@ -47,7 +52,7 @@ public class Board : IBoard
     {
         _ladder[bottom] = top;
     }
-    public IDictionary<int, int> GetLadder()
+    public Dictionary<int, int> GetLadder()
     {
         return _ladder;
     }

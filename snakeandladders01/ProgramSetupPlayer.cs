@@ -48,9 +48,16 @@ partial class PlayerSetup
                 // if (gameControl.SetPlayerName(name.ToUpper()))
                 if (name.Length > 2)
                 {
-                    gameControl.AddPlayer(name.ToUpper());
-                    Console.WriteLine($"Input player {i} Success");
-                    break;
+                    if (gameControl.GetPlayers().Exists(player => player.GetName() == name.ToUpper()))
+                    {
+                        Console.WriteLine("Player Name is used. Try new Player Name");
+                    }
+                    else
+                    {
+                        gameControl.AddPlayer(name.ToUpper());
+                        Console.WriteLine($"Input player {i} Success");
+                        break;
+                    }
                 }
                 else
                 {

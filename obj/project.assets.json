@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Formulatrix\\.nuget\\packages\\": {}
+    "/home/friday/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj",
+      "projectUniqueName": "/home/friday/bootcamp-formulatrix/bootcamp-formulatrix.csproj",
       "projectName": "bootcamp-formulatrix",
-      "projectPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\bootcamp-formulatrix.csproj",
-      "packagesPath": "C:\\Users\\Formulatrix\\.nuget\\packages\\",
-      "outputPath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\obj\\",
+      "projectPath": "/home/friday/bootcamp-formulatrix/bootcamp-formulatrix.csproj",
+      "packagesPath": "/home/friday/.nuget/packages/",
+      "outputPath": "/home/friday/bootcamp-formulatrix/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Formulatrix\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/friday/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.105/RuntimeIdentifierGraph.json"
       }
     }
   }

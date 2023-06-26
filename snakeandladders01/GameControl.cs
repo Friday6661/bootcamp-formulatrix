@@ -5,6 +5,7 @@ using IPlayerLib;
 using DiceLib;
 using IDiceLib;
 using CellTypeLib;
+using MessageLib;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,21 +20,22 @@ public class GameControl
     private Dictionary<Player, int> _playerPosition;
     private Dictionary<Player, int> _lastRollValue;
     private Dictionary<Player, int> _playerFinished;
+    public delegate int snakeLaddderActionDelegate(Player player, int currentPosition);
+    public delegate List<Player> PlayersAtFinished();
+    public event snakeLaddderActionDelegate onSnakeEncounter;
+    public event snakeLaddderActionDelegate onLadderEncounter;
+    public event PlayersAtFinished onPlayersAtFinished;
     public GameControl()
     {
         _players = new List<Player>();
-        _dice = new Dice(0);
-        _board = new Board(0);
+        _dice = new Dice();
+        _board = new Board();
         _playerPosition = new Dictionary<Player, int>();
         _lastRollValue = new Dictionary<Player, int>();
         _playerFinished = new Dictionary<Player, int>();
         _cellType = new CellType();
     }
     // Setup Players
-    public Player GetPlayer(string name)
-    {
-        return _players.FirstOrDefault(player => player.GetName() == name);
-    }
     public void AddPlayer(string name)
     {
         _players.Add(new Player(name));
@@ -85,6 +87,10 @@ public class GameControl
         }
         return string.Empty;
     }
+    public Dictionary<Player, int> GetPlayerPositions()
+    {
+        return _playerPosition;
+    }
     public Player GetPlayerAtPosition(int position)
     {
         foreach (KeyValuePair<Player, int> entry in _playerPosition)
@@ -129,10 +135,14 @@ public class GameControl
     }
     public List<Player> GetPlayersAtFinished()
     {
+        if (onPlayersAtFinished != null)
+        {
+            return onPlayersAtFinished.Invoke();
+        }
         List<Player> playersAtFinished = new List<Player>();
         foreach (var player in _players)
         {
-            if (GetPlayerPosition(player) == _board.GetSize())
+            if (GetPlayerPosition(player) == GetBoardSize())
             {
                 playersAtFinished.Add(player);
             }
@@ -142,33 +152,55 @@ public class GameControl
     public void MovePlayer(Player player)
     {
         int currentPosition = GetPlayerPosition(player);
+        if (currentPosition == GetBoardSize())
+        {
+            return;
+        }
         int newPosition = currentPosition + _lastRollValue[player];
         if (newPosition < _board.GetSize())
         {
-            Console.WriteLine($"Player {player.GetName} moves to position {newPosition}");
-            switch (GetCellType(newPosition))
+            // Console.WriteLine($"Player {GetPlayerName(player)} moves to position {newPosition}");
+            // Snake and Ladder encountered
+            if (GetBoard().GetSnake().ContainsKey(newPosition) && !GetRollAgain(player))
             {
-                case CellType.SnakeHead:
-                    Console.WriteLine($"Player {player.GetName()} encountered a snake! moves to position {newPosition}");
-                    newPosition = HandleSnakeEncounter(player, newPosition);
-                    break;
-                case CellType.LadderBottom:
-                    Console.WriteLine($"Player {player.GetName()} encountered a ladder! moves to position {newPosition}");
-                    newPosition = HandleLadderEncounter(player, newPosition);
-                    break;
-                default:
-                    break;
+                newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
+                Message.SnakeEncounter.ToString();
+            }
+            else if (GetBoard().GetLadder().ContainsKey(newPosition) && !GetRollAgain(player))
+            {
+                newPosition = onLadderEncounter?.Invoke(player, newPosition) ?? GetLadderTop(newPosition);
+                Message.LadderEncounter.ToString();
+            }
+            Message.NewPosition.ToString();
+            // Console.WriteLine($"Player {GetPlayerName(player)} moves to position {newPosition}");
+        }
+        else if (newPosition > GetBoardSize())
+        {
+            newPosition = GetBoardSize() - (newPosition - GetBoardSize());
+            Message.ExceededMove.ToString();
+            if (GetBoard().GetSnake().ContainsKey(newPosition))
+            {
+                newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
+                Message.SnakeEncounter.ToString();
+            }
+            else if (GetBoard().GetLadder().ContainsKey(newPosition))
+            {
+                newPosition = onLadderEncounter?.Invoke(player, newPosition) ?? GetLadderTop(newPosition);
+                Message.LadderEncounter.ToString();
+            }
+            Message.NewPosition.ToString();
+            // Console.WriteLine($"Player {GetPlayerName(player)} moves to position {newPosition}");
+            // Console.WriteLine($"Player {GetPlayerName(player)} exceeded the target position. Moving back to position {newPosition}");
+        }
+        else if (newPosition == GetBoardSize())
+        {
+            foreach (var p in GetPlayersAtFinished())
+            {
+                Message.Finished.ToString();
+                // Console.WriteLine($"Player Name {GetPlayerName(p)} Player ID {GetPlayerID(p)}"); 
             }
         }
-        else if (newPosition > _board.GetSize())
-        {
-            Console.WriteLine($"Player {player.GetName()} exceeded the target position.Moving back to position {newPosition}");
-            newPosition = _board.GetSize() - (newPosition - _board.GetSize());
-        }
-        else if (newPosition == _board.GetSize())
-        {
-            IList<Player> playersAtFinished = GetPlayersAtFinished();
-        }
+        SetPlayerPosition(player, newPosition);
     }
 
     // Setup Dice
@@ -234,15 +266,23 @@ public class GameControl
     }
 
     // Setup Board
-    public bool SetBoard(int size)
+    public bool SetBoard(int size, Dictionary<int, int> snake, Dictionary<int, int> ladder)
     {
         if (size > 20 && size % 10 == 0)
         {
-            _board = new Board(size);
+            _board = new Board(size, snake, ladder);
             return true;
         }
         return false;
     }
+    // public void SetSnakes(int snakeHead, int snakeTail)
+    // {
+    //     if (snakeHead > snakeTail && snakeHead < GetBoardSize() && snakeTail > 0)
+    //     {
+    //         _board.SetSnake(snakeHead, snakeTail);
+    //         Console.WriteLine("Snake sets");
+    //     }
+    // }
     public Board GetBoard()
     {
         return _board;
@@ -251,7 +291,7 @@ public class GameControl
     {
         return _board.GetSize();
     }
-    public bool SetSnake(Dictionary<int, int> snakes)
+    public void SetSnake(Dictionary<int, int> snakes)
     {
         foreach (var snake in snakes)
         {
@@ -259,14 +299,9 @@ public class GameControl
             {
                 _board.AddSnake(snake.Key, snake.Value);
             }
-            else
-            {
-                return false;
-            }
         }
-        return true;
     }
-    public bool SetLadder(Dictionary<int, int> ladders)
+    public void SetLadder(Dictionary<int, int> ladders)
     {
         foreach (var ladder in ladders)
         {
@@ -274,12 +309,7 @@ public class GameControl
             {
                 _board.AddSnake(ladder.Key, ladder.Value);
             }
-            else
-            {
-                return false;
-            }
         }
-        return true;
     }
     public int GetSnakeHead(int tailPosition)
     {
@@ -333,16 +363,27 @@ public class GameControl
     {
         return GetLadderTop(currentPosition);
     }
+    public List<Player> HandlePlayersAtFinished(GameControl gameControl)
+    {
+        List<Player> players = new List<Player>();
+        List<Player> finishedPlayers = gameControl.GetPlayersAtFinished();
+        foreach (var player in finishedPlayers)
+        {
+            players.Add(player);
+        }
+        return players;
+    }
     public bool SetGameFinished()
     {
+        int playerFinishedCount = 0;
         foreach (Player player in _players)
         {
             if (GetPlayerPosition(player) == _board.GetSize())
             {
-                return true;
+                playerFinishedCount++;
             }
         }
-        return false;
+        return playerFinishedCount == _players.Count() - 1;
     }
     public CellType GetCellType(int position)
     {

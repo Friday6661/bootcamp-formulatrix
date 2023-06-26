@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZZt0mozQh2GQD7W3gIPmcfrczzi0u/vbogK4HMKRvB9cYpV+t9I4abkPb+8iU7IDkTp4nn+3jBXVBA8Nsun9Og==",
+  "dgSpecHash": "W8FtkSixJ/VN1wNDheHtLdGwFSVwbP1gfGJ/Xr8WlGLcjDuHZQO8ThLSVdlkOvqVK2KERq9vrpx+jjV8Hh18YQ==",
   "success": true,
-  "projectFilePath": "D:\\Jamal-bootcampformulatrix\\bootcamp-formulatrix\\snakeandladders01\\snakeandladders01.csproj",
+  "projectFilePath": "/home/friday/bootcamp-formulatrix/snakeandladders01/snakeandladders01.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Formulatrix\\.nuget\\packages\\shortid\\4.0.0\\shortid.4.0.0.nupkg.sha512"
+    "/home/friday/.nuget/packages/shortid/4.0.0/shortid.4.0.0.nupkg.sha512"
   ],
   "logs": []
 }

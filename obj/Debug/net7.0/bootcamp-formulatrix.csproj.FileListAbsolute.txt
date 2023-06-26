@@ -1,0 +1,5 @@
+/home/friday/bootcamp-formulatrix/obj/Debug/net7.0/bootcamp-formulatrix.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/obj/Debug/net7.0/bootcamp-formulatrix.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/obj/Debug/net7.0/bootcamp-formulatrix.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/obj/Debug/net7.0/bootcamp-formulatrix.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/obj/Debug/net7.0/bootcamp-formulatrix.csproj.CoreCompileInputs.cache

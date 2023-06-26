@@ -4,7 +4,8 @@ public class Dice : IDice
 {
     private int _numberOfSides;
     //private Random _random;
-
+    
+    public Dice(){}
     public Dice(int numberOfSides)
     {
         _numberOfSides = numberOfSides;

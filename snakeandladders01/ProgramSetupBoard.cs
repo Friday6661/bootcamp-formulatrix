@@ -30,19 +30,18 @@ partial class BoardSetup
 
     public static int GetBoardFromUser(GameControl gameControl)
     {
-        gameControl.SetLadder(ladders);
-        gameControl.SetSnake(snakes);
+        // gameControl.SetLadder(ladders);
         //gameControl(ladders,snake);
         Console.Clear();
         Console.WriteLine("==============[Setup Board]==============");
         int boardSize = 0;
-        while (gameControl.SetBoard(boardSize) == false)
+        while (gameControl.SetBoard(boardSize, snakes, ladders) == false)
         {
             Console.Write("Input the Number of cell on a Board: ");
             string input = Console.ReadLine();
-            if (int.TryParse(input, out boardSize) && gameControl.SetBoard(boardSize) == true)
+            if (int.TryParse(input, out boardSize) && gameControl.SetBoard(boardSize, snakes, ladders) == true)
             {
-                gameControl.SetBoard(boardSize);
+                gameControl.SetBoard(boardSize, snakes, ladders);
                 Console.WriteLine("Setup Board Succesfully");
             }
             else
