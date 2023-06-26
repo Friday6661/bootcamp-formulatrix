@@ -128,6 +128,11 @@ partial class DisplayBoard
             Console.WriteLine("|");
         }
     }
+    public static void ConsoleOutputHandler(string message)
+    {
+        Console.WriteLine(message); // Menampilkan pesan ke konsol
+    }
+
 }
 
 // partial class MovePlayerSet

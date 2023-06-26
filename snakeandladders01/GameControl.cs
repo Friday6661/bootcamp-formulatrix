@@ -408,3 +408,50 @@ public class GameControl
     }
     
 }
+// public void MovePlayer(Player player, Action<string> outputHandler)
+// {
+//     int currentPosition = GetPlayerPosition(player);
+//     if (currentPosition == GetBoardSize())
+//     {
+//         return;
+//     }
+//     int newPosition = currentPosition + _lastRollValue[player];
+//     if (newPosition < GetBoardSize())
+//     {
+//         if (GetBoard().GetSnake().ContainsKey(newPosition) && !GetRollAgain(player))
+//         {
+//             newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
+//             outputHandler(GetEnumDisplayName(SnakeLadderMessage.SnakeEncounter));
+//         }
+//         else if (GetBoard().GetLadder().ContainsKey(newPosition) && !GetRollAgain(player))
+//         {
+//             newPosition = onLadderEncounter?.Invoke(player, newPosition) ?? GetLadderTop(newPosition);
+//             outputHandler(GetEnumDisplayName(SnakeLadderMessage.LadderEncounter));
+//         }
+//         outputHandler(GetEnumDisplayName(SnakeLadderMessage.NewPosition));
+//     }
+//     else if (newPosition > GetBoardSize())
+//     {
+//         newPosition = GetBoardSize() - (newPosition - GetBoardSize());
+//         outputHandler(GetEnumDisplayName(SnakeLadderMessage.ExceededMove));
+//         if (GetBoard().GetSnake().ContainsKey(newPosition))
+//         {
+//             newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
+//             outputHandler(GetEnumDisplayName(SnakeLadderMessage.SnakeEncounter));
+//         }
+//         else if (GetBoard().GetLadder().ContainsKey(newPosition))
+//         {
+//             newPosition = onLadderEncounter?.Invoke(player, newPosition) ?? GetLadderTop(newPosition);
+//             outputHandler(GetEnumDisplayName(SnakeLadderMessage.LadderEncounter));
+//         }
+//         outputHandler(GetEnumDisplayName(SnakeLadderMessage.NewPosition));
+//     }
+//     else if (newPosition == GetBoardSize())
+//     {
+//         foreach (var p in GetPlayersAtFinished())
+//         {
+//             outputHandler(GetEnumDisplayName(SnakeLadderMessage.Finished));
+//         }
+//     }
+//     SetPlayerPosition(player, newPosition);
+// }
