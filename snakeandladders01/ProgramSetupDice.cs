@@ -9,9 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace ProgramSetupDiceLib;
+namespace SnakesAndLadders;
 
-partial class DiceSetup
+partial class Program
 {
     public static int GetDiceFromUserInput(GameControl gameControl)
     {

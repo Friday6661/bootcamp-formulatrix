@@ -164,7 +164,7 @@ public class GameControl
             if (GetBoard().GetSnake().ContainsKey(newPosition) && !GetRollAgain(player))
             {
                 newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
-                // Message.SnakeEncounter.ToString();
+                Message.SnakeEncounter.ToString();
             }
             else if (GetBoard().GetLadder().ContainsKey(newPosition) && !GetRollAgain(player))
             {
@@ -406,7 +406,6 @@ public class GameControl
             return CellType.Normal;
         }
     }
-    
 }
 // public void MovePlayer(Player player, Action<string> outputHandler)
 // {
