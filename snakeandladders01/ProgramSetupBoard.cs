@@ -9,9 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace ProgramSetupBoardLib;
+namespace SnakesAndLadders;
 
-partial class BoardSetup
+partial class Program
 {
     static Dictionary<int, int> snakes = new Dictionary<int, int>()
     {

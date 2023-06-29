@@ -9,8 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace ProgramSetupPlayerLib;
-partial class PlayerSetup
+namespace SnakesAndLadders;
+partial class Program
 {
     //static GameControl gameControl = new GameControl();
     public static int GetInputNumberPlayers(GameControl gameControl)

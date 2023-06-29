@@ -10,9 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace ProgramDisplayBoard;
+namespace SnakesAndLadders;
 
-partial class DisplayBoard
+partial class Program
 {
     static GameControl GameControl;
     public static void DrawBoard(GameControl gameControl)

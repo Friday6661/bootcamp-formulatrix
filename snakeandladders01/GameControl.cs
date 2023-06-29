@@ -406,7 +406,6 @@ public class GameControl
             return CellType.Normal;
         }
     }
-    
 }
 // public void MovePlayer(Player player, Action<string> outputHandler)
 // {
