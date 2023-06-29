@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/bin/Debug/net7.0/CommandSolution
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/bin/Debug/net7.0/CommandSolution.deps.json
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/bin/Debug/net7.0/CommandSolution.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/bin/Debug/net7.0/CommandSolution.dll
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/bin/Debug/net7.0/CommandSolution.pdb
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.dll
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/refint/CommandSolution.dll
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.pdb
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/CommandSolution.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/CommandSolution/obj/Debug/net7.0/ref/CommandSolution.dll

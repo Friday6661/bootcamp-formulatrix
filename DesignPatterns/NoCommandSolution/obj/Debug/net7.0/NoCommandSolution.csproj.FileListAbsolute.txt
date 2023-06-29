@@ -1,0 +1,15 @@
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/bin/Debug/net7.0/NoCommandSolution
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/bin/Debug/net7.0/NoCommandSolution.deps.json
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/bin/Debug/net7.0/NoCommandSolution.runtimeconfig.json
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/bin/Debug/net7.0/NoCommandSolution.dll
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/bin/Debug/net7.0/NoCommandSolution.pdb
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.csproj.AssemblyReference.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.GeneratedMSBuildEditorConfig.editorconfig
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.AssemblyInfoInputs.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.AssemblyInfo.cs
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.csproj.CoreCompileInputs.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.dll
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/refint/NoCommandSolution.dll
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.pdb
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/NoCommandSolution.genruntimeconfig.cache
+/home/friday/bootcamp-formulatrix/DesignPatterns/NoCommandSolution/obj/Debug/net7.0/ref/NoCommandSolution.dll

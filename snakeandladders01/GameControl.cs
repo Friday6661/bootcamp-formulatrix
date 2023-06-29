@@ -164,14 +164,14 @@ public class GameControl
             if (GetBoard().GetSnake().ContainsKey(newPosition) && !GetRollAgain(player))
             {
                 newPosition = onSnakeEncounter?.Invoke(player, newPosition) ?? GetSnakeTail(newPosition);
-                // Message.SnakeEncounter.ToString();
+                Message.SnakeEncounter.ToString();
             }
             else if (GetBoard().GetLadder().ContainsKey(newPosition) && !GetRollAgain(player))
             {
                 newPosition = onLadderEncounter?.Invoke(player, newPosition) ?? GetLadderTop(newPosition);
-                // Message.LadderEncounter.ToString();
+                Message.LadderEncounter.ToString();
             }
-            // Message.NewPosition.ToString();
+            Message.NewPosition.ToString();
             // Console.WriteLine($"Player {GetPlayerName(player)} moves to position {newPosition}");
         }
         else if (newPosition > GetBoardSize())
